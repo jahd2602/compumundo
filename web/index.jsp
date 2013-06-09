@@ -13,11 +13,8 @@
     </head>
     <body>
         <h1>Compu Mundo prueba merge</h1>
-<<<<<<< HEAD
         Conflicto posible
-=======
         Esto aparece en devAmergear
         Esto tambien aparece en devAmergear
->>>>>>> devAmergear
     </body>
 </html>
