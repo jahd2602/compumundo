@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : index
     Created on : Jun 8, 2013, 1:25:09 PM
     Author     : jahd
@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Compu Mundo</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Compu Mundo</h1>
     </body>
 </html>
