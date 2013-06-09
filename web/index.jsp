@@ -13,6 +13,5 @@
     </head>
     <body>
         <h1>Compu Mundo prueba merge</h1>
-        Esto aparece en devAmergear
     </body>
 </html>
