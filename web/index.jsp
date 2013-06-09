@@ -12,6 +12,6 @@
         <title>Compu Mundo</title>
     </head>
     <body>
-        <h1>Compu Mundo</h1>
+        <h1>Compu Mundo prueba merge</h1>
     </body>
 </html>
