@@ -15,18 +15,18 @@
     </head>
     <body>
         <div class="container">
-            <%=Constantes.MENU_CLIENTE%>
+            <%=Constantes.MENU_ADMIN%>
             <div class="row">
                 <div class="span2 offset2">
-                    Categorias:
+                    Administrar:
                 </div>
                 <div class="span4">
                     <div class="row">
                         <div class="btn-group btn-group-vertical">
 
-                            <button class="span4 btn">Desktop</button>
-                            <button class="span4 btn">Laptop</button>
-                            <button class="span4 btn">Tablet</button>
+                            <button class="span4 btn">Base de Datos</button>
+                            <button class="span4 btn">Pedidos</button>
+                            <button class="span4 btn">Articulos</button>
                         </div>
                     </div>
 
