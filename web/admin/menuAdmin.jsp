@@ -15,18 +15,18 @@
     </head>
     <body>
         <div class="container">
-            <%=Constantes.MENU_CLIENTE%>
+            <%=Constantes.MENU_ADMIN%>
             <div class="row">
                 <div class="span2 offset2">
-                    Categorías:
+                    Administrar:
                 </div>
                 <div class="span4">
                     <div class="row">
                         <div class="btn-group btn-group-vertical">
 
-                            <a href="/cm/listarPorCategoria.jsp" class="span4 btn">Desktop</a>
-                            <a href="/cm/listarPorCategoria.jsp" class="span4 btn">Laptop</a>
-                            <a href="/cm/listarPorCategoria.jsp" class="span4 btn">Tablet</a>
+                            <a href="/cm/"class="span4 btn">Base de Datos</a>
+                            <a href="/cm/" class="span4 btn">Pedidos</a>
+                            <a href="/cm/" class="span4 btn">Artículos</a>
                         </div>
                     </div>
 

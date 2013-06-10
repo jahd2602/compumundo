@@ -11,25 +11,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Compu Mundo</title>
-        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="/cm/css/bootstrap.css">
     </head>
     <body>
         <div class="container">
-            <%=Constantes.MENU_ADMIN%>
+            <%=Constantes.MENU_CLIENTE%>
             <div class="row">
                 <div class="span2 offset2">
-                    Administrar:
+                    Categorias:
                 </div>
-                <div class="span4">
-                    <div class="row">
-                        <div class="btn-group btn-group-vertical">
+                <div class="input-append">
 
-                            <button class="span4 btn">Base de Datos</button>
-                            <button class="span4 btn">Pedidos</button>
-                            <button class="span4 btn">Articulos</button>
-                        </div>
-                    </div>
-
+                    <select class="span4">
+                        <option>Desktop</option>
+                        <option>Tablet</option>
+                    </select>
+                    <button class="btn" type="button">Ir</button>
                 </div>
             </div>
         </div>
