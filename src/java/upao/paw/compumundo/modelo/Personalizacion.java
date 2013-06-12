@@ -6,6 +6,8 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable
 public class Personalizacion {
 
+    @DatabaseField(generatedId = true)
+    private int id;
     @DatabaseField
     private String nombre;
 }
