@@ -12,8 +12,8 @@ public class Producto {
 
     @DatabaseField(generatedId = true)
     private int id;
-    @DatabaseField
+    @DatabaseField(canBeNull = false)
     private String descripcion;
-    @DatabaseField
+    @DatabaseField(canBeNull = false)
     private double precio_base;
 }

@@ -8,4 +8,8 @@ public class Configuracion {
 
     @DatabaseField(generatedId = true)
     private int id;
+    @DatabaseField(foreign = true, canBeNull = false)
+    private LineaPedido lineaPedido;
+    @DatabaseField(foreign = true, canBeNull = false)
+    private Personalizacion personalizacion;
 }

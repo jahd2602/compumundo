@@ -8,4 +8,8 @@ public class LineaPedido {
 
     @DatabaseField(generatedId = true)
     private int id;
+    @DatabaseField(foreign = true)
+    private Pedido pedido;
+    @DatabaseField(foreign = true)
+    private Producto producto;
 }

@@ -8,6 +8,6 @@ public class TipoPersonalizacion {
 
     @DatabaseField(generatedId = true)
     private int id;
-    @DatabaseField
+    @DatabaseField(canBeNull = false)
     private String nombre;
 }

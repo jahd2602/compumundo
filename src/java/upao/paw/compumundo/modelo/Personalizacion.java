@@ -8,6 +8,10 @@ public class Personalizacion {
 
     @DatabaseField(generatedId = true)
     private int id;
-    @DatabaseField
+    @DatabaseField(canBeNull = false)
     private String nombre;
+    @DatabaseField(foreign = true, canBeNull = false)
+    private Producto producto;
+    @DatabaseField(foreign = true, canBeNull = false)
+    private TipoPersonalizacion tipoPersonalizacion;
 }
