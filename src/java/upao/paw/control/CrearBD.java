@@ -1,4 +1,4 @@
-package upao.paw.compumundo.servlet;
+package upao.paw.control;
 
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
@@ -35,13 +35,13 @@ public class CrearBD extends HttpServlet {
         try {
             conexion = BD.getInstance().getConexion();
         } catch (SQLException ex) {
-            response.sendRedirect("/cm/admin/menuAdmin.jsp?mensaje=Error conectando a la base de datos&error=" + ex.getMessage());
+            response.sendRedirect("/cm/admin/menuAdmin.jsp?mensaje=No se pudo conectar a la base de datos&error=" + ex.getMessage());
             return;
         }
         try {
             TableUtils.createTableIfNotExists(conexion, Producto.class);
         } catch (SQLException ex) {
-            response.sendRedirect("/cm/admin/menuAdmin.jsp?mensaje=Error creando tabla&error=" + ex.getMessage());
+            response.sendRedirect("/cm/admin/menuAdmin.jsp?mensaje=No se pudo crear tabla&error=" + ex.getMessage());
             return;
         }
         response.sendRedirect("/cm/admin/menuAdmin.jsp?mensaje=Tabla creada con exito");
