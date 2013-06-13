@@ -12,12 +12,6 @@
     <body>
         <div class="container">
             <%@include file="/WEB-INF/jspf/plantillaMenuAdmin.jspf"%>
-            <!--Inicio Plantilla Alerta-->
-            <div class="alert">
-                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                <strong>Warning!</strong> Best check yo self, you're not looking too good.
-            </div>
-            <!--Fin Plantilla Alerta-->
             <div class="row">
                 <div class="span2 offset2">
                     Administrar:

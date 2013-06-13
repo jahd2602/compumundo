@@ -1,0 +1,15 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<c:if test="${not empty param.mensaje}">
+    <c:choose>
+        <c:when test="${not empty param.error}">
+            <div class="alert alert-error">
+        </c:when>
+        <c:otherwise>
+            <div class="alert alert-success">
+        </c:otherwise>
+    </c:choose>
+    <a href="?" class="close">&times;</a>
+    ${param.mensaje}
+</div>
+</c:if>
