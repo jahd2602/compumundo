@@ -1,0 +1,6 @@
+<%@ page pageEncoding="UTF-8" %>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Compu Mundo</title>
+    <link rel="stylesheet" href="/cm/css/bootstrap.css">
+</head>

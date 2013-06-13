@@ -1,0 +1,13 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@include file="plantillaCabecera.jspf" %>
+<div class = "navbar">
+    <div class = "navbar-inner">
+        <ul class = "nav">
+            <li> <a href = "/cm/index.jsp"> <i class="icon-home"></i> Inicio </a></li>
+        </ul>
+        <ul class = "nav pull-right">
+            <li><a href = "#"> <i class="icon-shopping-cart"></i> Ver Carrito </a></li>
+            <li> <a href = "/cm/admin/menuAdmin.jsp"> <i class="icon-wrench"></i> Administrar </a></li>
+        </ul>
+    </div>
+</div>
