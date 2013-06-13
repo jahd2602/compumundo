@@ -9,5 +9,5 @@ public class Pedido {
     @DatabaseField(generatedId = true)
     private int id;
     @DatabaseField(foreign = true)
-    private Cliente cliente;
+    private aaaaaaCliente cliente;
 }
