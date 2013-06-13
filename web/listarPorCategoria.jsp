@@ -8,14 +8,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Compu Mundo</title>
-        <link rel="stylesheet" href="/cm/css/bootstrap.css">
-    </head>
+    <%@include file="/WEB-INF/jspf/plantillaHead.jspf" %>
     <body>
         <div class="container">
-            <%=Constantes.MENU_CLIENTE%>
+            <%@include file="/WEB-INF/jspf/plantillaMenuCliente.jspf"%>
             <div class="row">
                 <div class="span1 offset1">
                     <h3>Desktop</h3>

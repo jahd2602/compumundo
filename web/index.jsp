@@ -4,14 +4,13 @@
     Author     : jahd
 --%>
 
-<%@page import="upao.paw.compumundo.Constantes"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <%@include file="WEB-INF/jspf/plantillaHead.jspf" %>
+    <%@include file="/WEB-INF/jspf/plantillaHead.jspf" %>
     <body>
         <div class="container">
-            <%=Constantes.MENU_CLIENTE%>
+            <%@include file="/WEB-INF/jspf/plantillaMenuCliente.jspf"%>
             <div class="row">
                 <div class="span2 offset2">
                     Categorías:
