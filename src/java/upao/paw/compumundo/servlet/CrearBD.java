@@ -1,11 +1,16 @@
 package upao.paw.compumundo.servlet;
 
+import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.table.TableUtils;
 import java.io.IOException;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import upao.paw.compumundo.BD;
+import upao.paw.compumundo.modelo.Producto;
 
 /**
  *
@@ -26,7 +31,20 @@ public class CrearBD extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("/cm/admin/menuAdmin.jsp");
+        ConnectionSource conexion;
+        try {
+            conexion = BD.getInstance().getConexion();
+        } catch (SQLException ex) {
+            response.sendRedirect("/cm/admin/menuAdmin.jsp?mensaje=Error conectando a la base de datos&error=" + ex.getMessage());
+            return;
+        }
+        try {
+            TableUtils.createTableIfNotExists(conexion, Producto.class);
+        } catch (SQLException ex) {
+            response.sendRedirect("/cm/admin/menuAdmin.jsp?mensaje=Error creando tabla&error=" + ex.getMessage());
+            return;
+        }
+        response.sendRedirect("/cm/admin/menuAdmin.jsp?mensaje=Tabla creada con exito");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

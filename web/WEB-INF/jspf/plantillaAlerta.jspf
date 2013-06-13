@@ -10,6 +10,9 @@
         </c:otherwise>
     </c:choose>
     <a href="?" class="close">&times;</a>
-    ${param.mensaje}
+    <strong>${param.mensaje}</strong>
+    <c:if test="${not empty param.error}">
+        ${param.error}
+    </c:if>
 </div>
 </c:if>
