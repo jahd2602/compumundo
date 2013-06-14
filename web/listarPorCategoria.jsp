@@ -17,7 +17,7 @@
         <div class="container">
             <%=Constantes.MENU_CLIENTE%>
             <div class="row">
-                <div class="span1 offset1">
+                <div class="span3 offset1">
                     <h3>Desktop</h3>
                 </div>
                 <div class="offset2 input-append"  style="margin-top: 14px;">

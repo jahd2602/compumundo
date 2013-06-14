@@ -336,7 +336,7 @@ a:focus {
   width: 140px;
 }
 
-.span1 {
+.span3 {
   width: 60px;
 }
 
@@ -479,7 +479,7 @@ a:focus {
   *width: 14.840425531914894%;
 }
 
-.row-fluid .span1 {
+.row-fluid .span3 {
   width: 6.382978723404255%;
   *width: 6.329787234042553%;
 }
@@ -1406,9 +1406,9 @@ textarea.span2,
   width: 126px;
 }
 
-input.span1,
-textarea.span1,
-.uneditable-input.span1 {
+input.span3,
+textarea.span3,
+.uneditable-input.span3 {
   width: 46px;
 }
 
@@ -2157,8 +2157,8 @@ table th[class*="span"],
   margin-left: 0;
 }
 
-.table td.span1,
-.table th.span1 {
+.table td.span3,
+.table th.span3 {
   float: none;
   width: 44px;
   margin-left: 0;

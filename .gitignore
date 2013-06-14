@@ -14,3 +14,4 @@
 /build/
 !/lib/ormlite-jdbc-4.45.jar
 !/lib/ormlite-core-4.45.jar
+/nbproject/private/

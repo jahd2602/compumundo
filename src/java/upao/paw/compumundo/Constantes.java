@@ -8,7 +8,7 @@ public class Constantes {
 
     public static final String CABECERA = "<div class=\"row\">"
             + "        <div class = \"span12\">"
-            + "        <h2> Compu Mundo Logo </h2>"
+            + "         <a href=\"/cm/index.jsp\"><img src=\"/cm/img/banner.png\"> </img></a>"
             + "        </div>"
             + "        </div>";
     public static final String MENU_CLIENTE = CABECERA + "<div class = \"navbar\">"
