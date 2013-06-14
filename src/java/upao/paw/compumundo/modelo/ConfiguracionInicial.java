@@ -9,7 +9,7 @@ public class ConfiguracionInicial {
     @DatabaseField(generatedId = true)
     private int id;
     @DatabaseField(foreign = true, canBeNull = false)
-    private Pedido pedido;
+    private Producto producto;
     @DatabaseField(foreign = true, canBeNull = false)
     private Personalizacion personalizacion;
 
@@ -21,12 +21,12 @@ public class ConfiguracionInicial {
         this.id = id;
     }
 
-    public Pedido getPedido() {
-        return pedido;
+    public Producto getProducto() {
+        return producto;
     }
 
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     public Personalizacion getPersonalizacion() {
