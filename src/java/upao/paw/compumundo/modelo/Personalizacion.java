@@ -12,6 +12,8 @@ public class Personalizacion {
     private String nombre;
     @DatabaseField(foreign = true, canBeNull = false)
     private TipoPersonalizacion tipoPersonalizacion;
+    @DatabaseField(canBeNull = false)
+    private double precio;
 
     public int getId() {
         return id;
@@ -35,5 +37,13 @@ public class Personalizacion {
 
     public void setTipoPersonalizacion(TipoPersonalizacion tipoPersonalizacion) {
         this.tipoPersonalizacion = tipoPersonalizacion;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 }
