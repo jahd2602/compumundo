@@ -16,3 +16,4 @@
 !/lib/ormlite-core-4.45.jar
 /nbproject/private/
 /target
+*.directory
