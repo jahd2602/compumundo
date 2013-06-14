@@ -23,7 +23,7 @@
                         <div class="btn-group btn-group-vertical">
 
                             <a href="/cm/servlet/CrearBD"class="span4 btn">Crear Tablas Vacias</a>
-                            <a href="/cm/" class="span4 btn">Insertar Ejemplos</a>
+                            <a href="/cm/servlet/InsertarEjemplosBD" class="span4 btn">Insertar Ejemplos</a>
                             <a href="/cm/servlet/EliminarBD" class="span4 btn">Eliminar Todas las Tablas</a>
                         </div>
                     </div>
