@@ -16,8 +16,8 @@ import upao.paw.compumundo.modelo.*;
  *
  * @author jahd
  */
-@WebServlet(name = "CrearBD", urlPatterns = {"/servlet/CrearBD"})
-public class CrearBD extends HttpServlet {
+@WebServlet(name = "CrearBD", urlPatterns = {"/servlet/EliminarBD"})
+public class EliminarBD extends HttpServlet {
 
     private static final String REDIRECCION = "/cm/admin/baseDeDatos.jsp";
 
@@ -42,21 +42,21 @@ public class CrearBD extends HttpServlet {
             return;
         }
         try {
-            TableUtils.createTableIfNotExists(conexion, Comprador.class);
-            TableUtils.createTableIfNotExists(conexion, Configuracion.class);
-            TableUtils.createTableIfNotExists(conexion, ConfiguracionInicial.class);
-            TableUtils.createTableIfNotExists(conexion, LineaPedido.class);
-            TableUtils.createTableIfNotExists(conexion, Pedido.class);
-            TableUtils.createTableIfNotExists(conexion, Personalizacion.class);
-            TableUtils.createTableIfNotExists(conexion, Producto.class);
-            TableUtils.createTableIfNotExists(conexion, TipoPersonalizacion.class);
+            TableUtils.dropTable(conexion, Comprador.class, true);
+            TableUtils.dropTable(conexion, Configuracion.class, true);
+            TableUtils.dropTable(conexion, ConfiguracionInicial.class, true);
+            TableUtils.dropTable(conexion, LineaPedido.class, true);
+            TableUtils.dropTable(conexion, Pedido.class, true);
+            TableUtils.dropTable(conexion, Personalizacion.class, true);
+            TableUtils.dropTable(conexion, Producto.class, true);
+            TableUtils.dropTable(conexion, TipoPersonalizacion.class, true);
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
-                    + "?mensaje=No se pudieron crear las tablas&error=" + ex.getMessage());
+                    + "?mensaje=No se pudieron eliminar las tablas&error=" + ex.getMessage());
             return;
         }
         response.sendRedirect(REDIRECCION
-                + "?mensaje=Tablas creadas con exito");
+                + "?mensaje=Tablas eliminadas con exito");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -13,7 +13,7 @@
         <div class="container">
             <%@include file="/WEB-INF/jspf/plantillaMenuAdmin.jspf"%>
             <div class="row">
-                <div class="span12 offset1">
+                <div class="span11 offset1">
                     <h3>Administrar Base de Datos</h3>
                 </div>
             </div>
@@ -24,7 +24,7 @@
 
                             <a href="/cm/servlet/CrearBD"class="span4 btn">Crear Tablas Vacias</a>
                             <a href="/cm/" class="span4 btn">Insertar Ejemplos</a>
-                            <a href="/cm/" class="span4 btn">Eliminar Tablas Vacias</a>
+                            <a href="/cm/servlet/EliminarBD" class="span4 btn">Eliminar Todas las Tablas</a>
                         </div>
                     </div>
 

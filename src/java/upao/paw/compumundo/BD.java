@@ -16,6 +16,7 @@ public class BD {
     private JdbcPooledConnectionSource conexion;
     private Dao<Comprador, Integer> compradorDao = null;
     private Dao<Configuracion, Integer> configuracionDao = null;
+    private Dao<ConfiguracionInicial, Integer> configuracionInicialDao = null;
     private Dao<LineaPedido, Integer> lineaPedidoDao = null;
     private Dao<Pedido, Integer> pedidoDao = null;
     private Dao<Personalizacion, Integer> personalizacionDao = null;
@@ -39,6 +40,7 @@ public class BD {
         return conexion;
     }
 
+    //<editor-fold defaultstate="collapsed" desc="Getters Dao">
     public Dao<Comprador, Integer> getCompradorDao() throws SQLException {
         return compradorDao == null ? compradorDao = DaoManager.createDao(
                 conexion, Comprador.class) : compradorDao;
@@ -47,6 +49,11 @@ public class BD {
     public Dao<Configuracion, Integer> getConfiguracionDao() throws SQLException {
         return configuracionDao == null ? configuracionDao = DaoManager.createDao(
                 conexion, Configuracion.class) : configuracionDao;
+    }
+
+    public Dao<ConfiguracionInicial, Integer> getConfiguracionInicialDao() throws SQLException {
+        return configuracionInicialDao == null ? configuracionInicialDao = DaoManager.createDao(
+                conexion, ConfiguracionInicial.class) : configuracionInicialDao;
     }
 
     public Dao<LineaPedido, Integer> getLineaPedidoDao() throws SQLException {
@@ -73,4 +80,5 @@ public class BD {
         return tipoPersonalizacionDao == null ? tipoPersonalizacionDao = DaoManager.createDao(
                 conexion, TipoPersonalizacion.class) : tipoPersonalizacionDao;
     }
+    //</editor-fold>
 }

@@ -13,7 +13,7 @@
         <div class="container">
             <%@include file="/WEB-INF/jspf/plantillaMenuAdmin.jspf"%>
             <div class="row">
-                <div class="span12 offset1">
+                <div class="span11 offset1">
                     <h3>Men&uacute; Administrativo</h3>
                 </div>
             </div>
