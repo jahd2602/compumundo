@@ -16,7 +16,7 @@ import upao.paw.compumundo.modelo.*;
  *
  * @author jahd
  */
-@WebServlet(name = "CrearBD", urlPatterns = {"/servlet/EliminarBD"})
+@WebServlet(name = "EliminarBD", urlPatterns = {"/servlet/EliminarBD"})
 public class EliminarBD extends HttpServlet {
 
     private static final String REDIRECCION = "/cm/admin/baseDeDatos.jsp";
