@@ -16,7 +16,7 @@ import upao.paw.compumundo.modelo.Producto;
  *
  * @author admin
  */
-@WebServlet(name = "CrearBD", urlPatterns = {"/servlet/admin/CrearBD"})
+@WebServlet(name = "CrearBD", urlPatterns = {"/servlet/CrearBD"})
 public class CrearBD extends HttpServlet {
 
     /**

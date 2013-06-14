@@ -12,10 +12,12 @@
         <div class="container">
             <%@include file="/WEB-INF/jspf/plantillaMenuCliente.jspf"%>
             <div class="row">
-                <div class="span2 offset2">
-                    Categorías:
+                <div class="span12 offset1">
+                    <h3>Categor&iacute;as</h3>
                 </div>
-                <div class="span4">
+            </div>
+            <div class="row">
+                <div class="span4 offset2">
                     <div class="row">
                         <div class="btn-group btn-group-vertical">
 
