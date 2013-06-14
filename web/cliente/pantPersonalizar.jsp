@@ -31,12 +31,12 @@
                 <div class="row">
                     <div class="span2"> Disco </div>
                     <div class="span4">borrar una vez implementado<%String varDisco;%> </div>
-                    <div class="span2"> S/ <%=priceDisco%></div>  
+                    <div class="span2"> S/ <%=priceDisco%></div>
                     <div class="span4"> <select name="cboxPersonal2">
                             <option> 2 teras</option>
                             <option> 1 tera</option>
                         </select>
-                    </div>           
+                    </div>
                 </div>
 
                 <div class="row">
@@ -58,44 +58,44 @@
                             <option> Litio 6 horas</option>
                             <option> Adamantium 80 horas :D</option>
                         </select>
-                    </div>               
-                </div>
-      
- <div class="row">
-                    <div class="span3">Total</div>
-                    
-                    <div class="span2 offset5"> S/ <%=suma%> </div>
-                    <div class="span">
-                        <a href="/cm/"class="span2 btn">Realizar Cambios</a> 
                     </div>
+                </div>
+
+                <div class="row">
+                    <div class="span3"><strong>Total</strong></div>
+
+                    <div class="span2 offset5"> S/ <%=suma%> </div>
+
                 </div>
 
 
                 <%--Arriba Cambiar El href del botón, al jsp de la página a donde te manda :D --%>
                 <%--fin parte 2/3 mid--%>
 
-            </div>  
+            </div>
             <%--parte mid--%>
             <%--Comienzo 1/3--%>
             <div class="row show-grid">
-                <div class="span4"></div>
+                <div class="span2"></div>
                 <div class="span">
 
                     <div class="span2">
                         <a class="btn">Agregar Al Carro</a>
-                    </div>  
+                    </div>
 
                     <!se parteee>
-                    <div class="span2"> 
+                    <div class="span2">
                         <a class="btn">Cancelar</a>
                     </div></div>
 
-                <div class="span4"></div>
+                <div class="span2 offset2">
+                    <a href="/cm/"class="span2 btn">Realizar Cambios</a>
+                </div>
             </div>
-            <%--fin parte 1/3--%> 
+            <%--fin parte 1/3--%>
 
 
 
-        </div> 
+        </div>
     </body>
 </html>
