@@ -16,4 +16,28 @@ public class Producto {
     private String descripcion;
     @DatabaseField(canBeNull = false)
     private double precio_base;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public double getPrecio_base() {
+        return precio_base;
+    }
+
+    public void setPrecio_base(double precio_base) {
+        this.precio_base = precio_base;
+    }
 }

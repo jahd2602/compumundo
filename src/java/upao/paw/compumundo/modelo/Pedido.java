@@ -10,4 +10,20 @@ public class Pedido {
     private int id;
     @DatabaseField(foreign = true)
     private Comprador comprador;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Comprador getComprador() {
+        return comprador;
+    }
+
+    public void setComprador(Comprador comprador) {
+        this.comprador = comprador;
+    }
 }

@@ -12,4 +12,28 @@ public class Configuracion {
     private LineaPedido lineaPedido;
     @DatabaseField(foreign = true, canBeNull = false)
     private Personalizacion personalizacion;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public LineaPedido getLineaPedido() {
+        return lineaPedido;
+    }
+
+    public void setLineaPedido(LineaPedido lineaPedido) {
+        this.lineaPedido = lineaPedido;
+    }
+
+    public Personalizacion getPersonalizacion() {
+        return personalizacion;
+    }
+
+    public void setPersonalizacion(Personalizacion personalizacion) {
+        this.personalizacion = personalizacion;
+    }
 }
