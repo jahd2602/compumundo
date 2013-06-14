@@ -11,8 +11,6 @@ public class Personalizacion {
     @DatabaseField(canBeNull = false)
     private String nombre;
     @DatabaseField(foreign = true, canBeNull = false)
-    private Producto producto;
-    @DatabaseField(foreign = true, canBeNull = false)
     private TipoPersonalizacion tipoPersonalizacion;
 
     public int getId() {
@@ -29,14 +27,6 @@ public class Personalizacion {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public Producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
     }
 
     public TipoPersonalizacion getTipoPersonalizacion() {
