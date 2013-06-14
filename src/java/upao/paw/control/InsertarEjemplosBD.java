@@ -33,6 +33,7 @@ public class InsertarEjemplosBD extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //<editor-fold defaultstate="collapsed" desc="Conectar">
         BD bd;
         try {
             bd = BD.getInstance();
@@ -41,7 +42,9 @@ public class InsertarEjemplosBD extends HttpServlet {
                     + "?mensaje=No se pudo conectar a la base de datos&error=" + ex.getMessage());
             return;
         }
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Agregar TipoPersonalizacion Pantalla">
         TipoPersonalizacion tpPantalla = new TipoPersonalizacion();
         tpPantalla.setNombre("Pantalla");
         try {
@@ -51,7 +54,9 @@ public class InsertarEjemplosBD extends HttpServlet {
                     + "?mensaje=No se pudo crear ejemplo en tabla Tipo Personalizacion&error=" + ex.getMessage());
             return;
         }
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Agregar Personalizacion Pantalla de 15">
         Personalizacion per15 = new Personalizacion();
         per15.setTipoPersonalizacion(tpPantalla);
         per15.setNombre("15 pulgadas");
@@ -63,7 +68,9 @@ public class InsertarEjemplosBD extends HttpServlet {
                     + "?mensaje=No se pudo crear ejemplo en tabla Personalizacion&error=" + ex.getMessage());
             return;
         }
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Agregar Personalizacion Pantalla de 22">
         Personalizacion per22 = new Personalizacion();
         per22.setTipoPersonalizacion(tpPantalla);
         per22.setNombre("22 pulgadas");
@@ -75,7 +82,9 @@ public class InsertarEjemplosBD extends HttpServlet {
                     + "?mensaje=No se pudo crear ejemplo en tabla Personalizacion&error=" + ex.getMessage());
             return;
         }
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Agregar Producto Computadora HP">
         Producto proComputadora = new Producto();
         proComputadora.setDescripcion("Computadora HP");
         proComputadora.setPrecio_base(890);
@@ -86,7 +95,9 @@ public class InsertarEjemplosBD extends HttpServlet {
                     + "?mensaje=No se pudo crear ejemplo en tabla Producto&error=" + ex.getMessage());
             return;
         }
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Agregar Configuracion Inicial a Computadora HP -> Pantalla de 15">
         ConfiguracionInicial ciComputadora = new ConfiguracionInicial();
         ciComputadora.setProducto(proComputadora);
         ciComputadora.setPersonalizacion(per15);
@@ -97,7 +108,9 @@ public class InsertarEjemplosBD extends HttpServlet {
                     + "?mensaje=No se pudo crear ejemplo en tabla ConfiguracionInicial&error=" + ex.getMessage());
             return;
         }
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Crear Pedido">
         Pedido pedido = new Pedido();
         try {
             bd.getPedidoDao().create(pedido);
@@ -106,7 +119,9 @@ public class InsertarEjemplosBD extends HttpServlet {
                     + "?mensaje=No se pudo crear ejemplo en tabla Pedido&error=" + ex.getMessage());
             return;
         }
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Crear LineaPedido 1 -> Computadora HP">
         LineaPedido lp1 = new LineaPedido();
         lp1.setPedido(pedido);
         lp1.setProducto(proComputadora);
@@ -117,7 +132,9 @@ public class InsertarEjemplosBD extends HttpServlet {
                     + "?mensaje=No se pudo crear ejemplo en tabla LineaPedido&error=" + ex.getMessage());
             return;
         }
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Crea Configuración para LineaPedido 1 por defecto">
         Configuracion c1 = new Configuracion();
         c1.setLineaPedido(lp1);
         Producto pLp1 = lp1.getProducto();
@@ -139,8 +156,9 @@ public class InsertarEjemplosBD extends HttpServlet {
                     + "?mensaje=No se pudo crear ejemplo en tabla Configuracion (1)&error=" + ex.getMessage());
             return;
         }
+        //</editor-fold>
 
-
+        //<editor-fold defaultstate="collapsed" desc="Crear LineaPedido 1 -> Computadora HP">
         LineaPedido lp2 = new LineaPedido();
         lp2.setPedido(pedido);
         lp2.setProducto(proComputadora);
@@ -151,7 +169,9 @@ public class InsertarEjemplosBD extends HttpServlet {
                     + "?mensaje=No se pudo crear ejemplo en tabla LineaPedido&error=" + ex.getMessage());
             return;
         }
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Crea Configuración para LineaPedido 1 por defecto">
         Configuracion c2 = new Configuracion();
         c2.setLineaPedido(lp2);
         Producto pLp2 = lp2.getProducto();
@@ -173,7 +193,9 @@ public class InsertarEjemplosBD extends HttpServlet {
                     + "?mensaje=No se pudo crear ejemplo en tabla Configuracion (2)&error=" + ex.getMessage());
             return;
         }
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Personalizar Configuracion de Linea Pedido 2 -> Pantalla de 22">
         c2.setPersonalizacion(per22);
         try {
             bd.getConfiguracionDao().update(c2);
@@ -182,7 +204,9 @@ public class InsertarEjemplosBD extends HttpServlet {
                     + "?mensaje=No se pudo crear ejemplo en tabla Configuracion&error=" + ex.getMessage());
             return;
         }
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Crear Comprador">
         Comprador comprador = new Comprador();
         comprador.setNombre("John Perez");
         try {
@@ -192,7 +216,9 @@ public class InsertarEjemplosBD extends HttpServlet {
                     + "?mensaje=No se pudo crear ejemplo en tabla Comprador&error=" + ex.getMessage());
             return;
         }
+        //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Relacionar Pedido con Comprador y Establecer Estado a Pedido">
         pedido.setComprador(comprador);
         pedido.setEstado(Pedido.ESTADO_PEDIDO);
         try {
@@ -202,15 +228,25 @@ public class InsertarEjemplosBD extends HttpServlet {
                     + "?mensaje=No se pudo crear ejemplo en tabla Pedido&error=" + ex.getMessage());
             return;
         }
+        //</editor-fold>
 
         response.sendRedirect(REDIRECCION
                 + "?mensaje=Datos de ejemplo insertados con exito");
     }
 
-    private Personalizacion getPersonalizacionInicial(Producto p, BD bd) throws SQLException, IndexOutOfBoundsException {
-        bd.getProductoDao().refresh(p);
+    /**
+     *
+     * @param producto a buscar
+     * @param bd con conexión a Base de Datos establecida
+     * @return Personalización por defecto, basándose en la tabla
+     * ConfiguracionInicial
+     * @throws SQLException Si no puede consultar en la tabla
+     * @throws IndexOutOfBoundsException Si no encontró ninguna personalización
+     */
+    private Personalizacion getPersonalizacionInicial(Producto producto, BD bd) throws SQLException, IndexOutOfBoundsException {
+        bd.getProductoDao().refresh(producto);
         ConfiguracionInicial ciPLp1;
-        ciPLp1 = bd.getConfiguracionInicialDao().queryForEq("producto_id", p).get(0);
+        ciPLp1 = bd.getConfiguracionInicialDao().queryForEq("producto_id", producto).get(0);
         return ciPLp1.getPersonalizacion();
     }
 
