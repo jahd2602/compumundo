@@ -14,6 +14,7 @@ public class BD {
 
     private static BD instance;
     private JdbcPooledConnectionSource conexion;
+    private Dao<Categoria, Integer> categoriaDao = null;
     private Dao<Comprador, Integer> compradorDao = null;
     private Dao<Configuracion, Integer> configuracionDao = null;
     private Dao<ConfiguracionInicial, Integer> configuracionInicialDao = null;
@@ -31,7 +32,7 @@ public class BD {
         if (instance == null) {
             instance = new BD(new JdbcPooledConnectionSource(
                     Constantes.BD_URL, Constantes.BD_USER, Constantes.BD_PWD));
-            instance.conexion.setTestBeforeGet(true);
+            //instance.conexion.setTestBeforeGet(true);
         }
         return instance;
     }
@@ -41,6 +42,11 @@ public class BD {
     }
 
     //<editor-fold defaultstate="collapsed" desc="Getters Dao">
+    public Dao<Categoria, Integer> getCategoriaDao() throws SQLException {
+        return categoriaDao == null ? categoriaDao = DaoManager.createDao(
+                conexion, Categoria.class) : categoriaDao;
+    }
+
     public Dao<Comprador, Integer> getCompradorDao() throws SQLException {
         return compradorDao == null ? compradorDao = DaoManager.createDao(
                 conexion, Comprador.class) : compradorDao;
