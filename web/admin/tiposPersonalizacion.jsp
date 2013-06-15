@@ -17,49 +17,53 @@
                     <h3>Administrar Tipos de Personalizaciones</h3>
                 </div>
             </div>
-            <div class="container">
-                <%   String tipoPersonalizar = "";
-                    int numVariantes = 0;%>
-
-
-                <div class="row">
-                    <div class="span6">
-                        <input type="radio" name="rbtnPersonal" value="<%=tipoPersonalizar%>" /> Color <%=tipoPersonalizar%>
+            <jsp:useBean id="listaTP" scope="application" class="upao.paw.compumundo.control.bean.BeanTiposPersonalizacion"/>
+            <c:catch var="ex">
+                <c:set var="tiposPersonalizacion" value="${listaTP.tiposPersonalizacion}"/>
+            </c:catch>
+            <c:choose>
+                <c:when test="${ex != null}">
+                    <div class="span10">
+                        <div class="alert alert-danger">
+                            No se pudo conectar a la base de datos
+                        </div>
                     </div>
+                </c:when>
+                <c:otherwise>
+                    <c:choose>
+                        <c:when test="${empty tiposPersonalizacion}">
+                            <div class="row">
+                                <div class="span10 offset1 lead">
+                                    No hay ningún tipo de personalización
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <jsp:useBean id="listaPersonalizacion" scope="application" class="upao.paw.compumundo.control.bean.BeanPersonalizacion"/>
+                            <c:forEach var="tp" items="${tiposPersonalizacion}">
+                                <c:set var="listaPersonalizacion.idTipoPersonalizacion" value="${tp.id}"/>
+                                <div class="row">
+                                    <div class="span4 offset1">
+                                        <input type="radio" name="id" value="${tp.id}" />
+                                        ${tp.nombre}
+                                    </div>
+                                    <div class="span4">${listaPersonalizacion.cantidadPorTipo} Variantes</div>
+                                </div>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
+                </c:otherwise>
+            </c:choose>
 
-                    <div class="span6"><%=numVariantes%> Variantes</div>
-
-                    <%--Lo de abajo borrar, es para que se va más bonito con más datos--%>
-                </div>
-                <div class="row">
-                    <div class="span6">
-                        <input type="radio" name="rbtnPersonal" value="<%=tipoPersonalizar%>" /> Capacidad <%=tipoPersonalizar%>
-                    </div>
-                    <div class="span6"><%=numVariantes%>1 Variantes</div>
-                </div>
-                <div class="row">
-                    <div class="span6">
-                        <input type="radio" name="rbtnPersonal" value="<%=tipoPersonalizar%>" /> Tamaño <%=tipoPersonalizar%>
-                    </div>
-                    <div class="span6"><%=numVariantes%>3 Variantes</div>
-                    <%--Fin del For--%>
-
-                </div>
+            <div class="row" style="margin-top: 20px">
+                <div class="span1 offset1"> Acciones: </div>
             </div>
 
-            <br>
-            <div class="row show-grid">
-                <div class="span4"> Acciones: </div>
-                <div class="span">
-
-                    <div class="span2">
-                        <a class="btn">Modificar</a>
-                    </div>
-
-                    <!se parteee>
-                    <div class="span2">
-                        <a class="btn">Eliminar</a>
-                    </div></div>
+            <div class="row offset1">
+                <div class="span2 btn-group btn-group-vertical">
+                    <a class="btn">Modificar</a>
+                    <a class="btn">Eliminar</a>
+                </div>
 
                 <div class="span4"></div>
             </div>
