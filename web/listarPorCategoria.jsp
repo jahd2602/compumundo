@@ -41,7 +41,7 @@
                         </div>
                         <div class="row">
                             <div class="span2 offset5">
-                                <a class="btn btn-primary btn-block">Personalizar</a>
+                                <a href="/cm/pantPersonalizar.jsp" class="btn btn-primary btn-block">Personalizar</a>
                             </div>
                         </div>
                     </div>

@@ -7,6 +7,11 @@
 
         <div class="container">
             <%@include file="/WEB-INF/jspf/plantillaMenuCliente.jspf"%>
+            <div class="row">
+                <div class="span11 offset1">
+                    <h3>Personalizar Producto</h3>
+                </div>
+            </div>
             <div class="container">
                 <% double pricePantalla = 0, priceDisco = 0, priceMemoria = 0, priceBateria = 0;
                     double suma = priceBateria + priceDisco + priceMemoria + pricePantalla;
@@ -73,11 +78,11 @@
 
                     <!se parteee>
                     <div class="span2">
-                        <a class="btn">Cancelar</a>
+                        <a href="/cm/" class="btn">Cancelar</a>
                     </div></div>
 
                 <div class="span2 offset2">
-                    <a href="/cm/"class="span2 btn">Realizar Cambios</a>
+                    <a class="span2 btn">Realizar Cambios</a>
                 </div>
             </div>
 

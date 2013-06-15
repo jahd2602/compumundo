@@ -8,8 +8,12 @@
     <body>
 
         <div class="container">
-            <%@include file="/WEB-INF/jspf/plantillaMenuCliente.jspf"%>
-
+            <%@include file="/WEB-INF/jspf/plantillaMenuAdmin.jspf"%>
+            <div class="row">
+                <div class="span11 offset1">
+                    <h3>Ver Pedido</h3>
+                </div>
+            </div>
             <div class="container">
                 <% Date Fecha = new Date();
                     String Cliente = "";
@@ -18,7 +22,7 @@
 
                 %>
 
-                <div class="span4 offset2">Cliente:Cesar Quiste <%=Cliente%> </div> <div class="span5">Fecha: 26/03/2013 <%=Fecha%></div><br><br>
+                <div class="span4 offset2">Cliente: Cesar Quiste <%=Cliente%> </div> <div class="span5">Fecha: 26/03/2013 <%=Fecha%></div><br><br>
 
                 <div class="row">
 
@@ -53,7 +57,7 @@
                 <div class="span">
 
                     <div class="span2">
-                        <a class="btn">Aceptar</a>
+                        <a href="/cm/admin/pedidos.jsp" class="btn">Aceptar</a>
                     </div>
 
                     <!se parteee>

@@ -11,7 +11,12 @@
     <body>
 
         <div class="container">
-            <%@include file="/WEB-INF/jspf/plantillaMenuCliente.jspf"%>
+            <%@include file="/WEB-INF/jspf/plantillaMenuAdmin.jspf"%>
+            <div class="row">
+                <div class="span11 offset1">
+                    <h3>Administrar Tipos de Personalizaciones</h3>
+                </div>
+            </div>
             <div class="container">
                 <%   String tipoPersonalizar = "";
                     int numVariantes = 0;%>

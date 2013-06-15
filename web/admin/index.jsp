@@ -23,8 +23,9 @@
                         <div class="btn-group btn-group-vertical">
 
                             <a href="/cm/admin/baseDeDatos.jsp"class="span4 btn">Base de Datos</a>
-                            <a href="/cm/" class="span4 btn">Pedidos</a>
-                            <a href="/cm/" class="span4 btn">Artículos</a>
+                            <a href="/cm/admin/pedidos.jsp" class="span4 btn">Pedidos</a>
+                            <a href="/cm/" class="span4 btn">Productos</a>
+                            <a href="/cm/admin/tiposPersonalizacion" class="span4 btn">Tipos de Personalizaci&oacute;n</a>
                         </div>
                     </div>
 
