@@ -2,17 +2,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Compu Mundo</title>
-        <link rel="stylesheet" href="/cm/css/bootstrap.css">
-    </head>
+    <%@include file="/WEB-INF/jspf/plantillaHead.jspf" %>
     <body>
 
         <div class="container">
-            <%=upao.paw.compumundo.Constantes.MENU_ADMIN%>
-
-            <%--Comienzo 2/3   mid--%>
+            <%@include file="/WEB-INF/jspf/plantillaMenuCliente.jspf"%>
             <div class="container">
                 <% double pricePantalla = 0, priceDisco = 0, priceMemoria = 0, priceBateria = 0;
                     double suma = priceBateria + priceDisco + priceMemoria + pricePantalla;
@@ -68,13 +62,7 @@
 
                 </div>
 
-
-                <%--Arriba Cambiar El href del botón, al jsp de la página a donde te manda :D --%>
-                <%--fin parte 2/3 mid--%>
-
             </div>
-            <%--parte mid--%>
-            <%--Comienzo 1/3--%>
             <div class="row show-grid">
                 <div class="span2"></div>
                 <div class="span">
@@ -92,9 +80,6 @@
                     <a href="/cm/"class="span2 btn">Realizar Cambios</a>
                 </div>
             </div>
-            <%--fin parte 1/3--%>
-
-
 
         </div>
     </body>

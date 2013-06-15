@@ -4,18 +4,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Compu Mundo</title>
-        <link rel="stylesheet" href="/cm/css/bootstrap.css">
-    </head>
+    <%@include file="/WEB-INF/jspf/plantillaHead.jspf" %>
     <body>
 
         <div class="container">
-            <%=upao.paw.compumundo.Constantes.MENU_ADMIN%>
+            <%@include file="/WEB-INF/jspf/plantillaMenuCliente.jspf"%>
 
-            <%--Comienzo 2/3   mid--%>
-            <%--Modificar Fecha con la de la creación, tambien enlazar los sgts atributos a la BD--%>
             <div class="container">
                 <% Date Fecha = new Date();
                     String Cliente = "";
@@ -53,9 +47,6 @@
                     </div>
                 </div>
             </div>
-            <%--fin parte 2/3 mid--%>
-            <%--parte mid--%>
-            <%--Comienzo 1/3--%>
             <br>
             <div class="row show-grid">
                 <div class="span4"></div>
@@ -72,8 +63,6 @@
 
                 <div class="span4"></div>
             </div>
-            <%--fin parte 1/3--%>
-
 
 
         </div>
