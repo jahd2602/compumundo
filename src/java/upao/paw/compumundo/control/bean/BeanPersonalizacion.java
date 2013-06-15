@@ -27,8 +27,6 @@ public class BeanPersonalizacion {
         long resultado = personalizacionDao.queryBuilder().setCountOf(true)
                 .selectColumns().where().eq("tipoPersonalizacion_id",
                 idTipoPersonalizacion).countOf();
-        System.out.println("idTipo: " + idTipoPersonalizacion);
-        System.out.println("Cantidad: " + resultado);
         return resultado;
     }
 
