@@ -19,37 +19,39 @@
             <div class="row">
                 <div class="span4 offset2">
                     <div class="row">
-                        <div class="btn-group btn-group-vertical">
-                            <jsp:useBean id="listaCategorias" scope="application" class="upao.paw.compumundo.control.bean.ListaCategorias"/>
-                            <c:catch var="ex">
-                                <c:set var="categorias" value="${listaCategorias.categorias}"/>
-                            </c:catch>
-                            <c:choose>
-                                <c:when test="${ex != null}">
-                                    <div class="row span12">
-                                        <div class="alert alert-danger">
-                                            No se pudo conectar a la base de datos
-                                        </div>
+
+                        <jsp:useBean id="listaCategorias" scope="application" class="upao.paw.compumundo.control.bean.BeanCategorias"/>
+                        <c:catch var="ex">
+                            <c:set var="categorias" value="${listaCategorias.categorias}"/>
+                        </c:catch>
+                        <c:choose>
+                            <c:when test="${ex != null}">
+                                <div class="span10">
+                                    <div class="alert alert-danger">
+                                        No se pudo conectar a la base de datos
                                     </div>
-                                </c:when>
-                                <c:otherwise>
-                                    <c:choose>
-                                        <c:when test="${empty categorias}">
-                                            <div class="row">
-                                                <div class="offset1 lead">
-                                                    No hay ninguna Categoría
-                                                </div>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <c:choose>
+                                    <c:when test="${empty categorias}">
+                                        <div class="row">
+                                            <div class="span10 offset1 lead">
+                                                No hay ninguna Categoría
                                             </div>
-                                        </c:when>
-                                        <c:otherwise>
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="btn-group btn-group-vertical">
                                             <c:forEach var="categoria" items="${categorias}">
                                                 <a href="/cm/listarPorCategoria.jsp?id=${categoria.id}" class="span4 btn">${categoria.nombre}</a>
                                             </c:forEach>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </c:otherwise>
-                            </c:choose>
-                        </div>
+                                        </div>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:otherwise>
+                        </c:choose>
+
                     </div>
 
                 </div>
