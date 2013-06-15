@@ -12,6 +12,10 @@ import upao.paw.compumundo.modelo.*;
  */
 public class BD {
 
+    public static Class[] ENTIDADES = {Categoria.class, Comprador.class,
+        Configuracion.class, ConfiguracionInicial.class, LineaPedido.class,
+        Pedido.class, Personalizacion.class, Producto.class,
+        TipoPersonalizacion.class};
     private static BD instance;
     private JdbcPooledConnectionSource conexion;
     private Dao<Categoria, Integer> categoriaDao = null;

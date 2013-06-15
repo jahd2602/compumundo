@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import upao.paw.compumundo.BD;
-import upao.paw.compumundo.modelo.*;
 
 /**
  *
@@ -42,15 +41,9 @@ public class CrearBD extends HttpServlet {
             return;
         }
         try {
-            TableUtils.createTableIfNotExists(conexion, Categoria.class);
-            TableUtils.createTableIfNotExists(conexion, Comprador.class);
-            TableUtils.createTableIfNotExists(conexion, Configuracion.class);
-            TableUtils.createTableIfNotExists(conexion, ConfiguracionInicial.class);
-            TableUtils.createTableIfNotExists(conexion, LineaPedido.class);
-            TableUtils.createTableIfNotExists(conexion, Pedido.class);
-            TableUtils.createTableIfNotExists(conexion, Personalizacion.class);
-            TableUtils.createTableIfNotExists(conexion, Producto.class);
-            TableUtils.createTableIfNotExists(conexion, TipoPersonalizacion.class);
+            for (Class entidad : BD.ENTIDADES) {
+                TableUtils.createTableIfNotExists(conexion, entidad);
+            }
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudieron crear las tablas&error=" + ex.getMessage());

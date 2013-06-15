@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import upao.paw.compumundo.BD;
-import upao.paw.compumundo.modelo.*;
 
 /**
  *
@@ -42,15 +41,9 @@ public class EliminarBD extends HttpServlet {
             return;
         }
         try {
-            TableUtils.dropTable(conexion, Categoria.class, true);
-            TableUtils.dropTable(conexion, Comprador.class, true);
-            TableUtils.dropTable(conexion, Configuracion.class, true);
-            TableUtils.dropTable(conexion, ConfiguracionInicial.class, true);
-            TableUtils.dropTable(conexion, LineaPedido.class, true);
-            TableUtils.dropTable(conexion, Pedido.class, true);
-            TableUtils.dropTable(conexion, Personalizacion.class, true);
-            TableUtils.dropTable(conexion, Producto.class, true);
-            TableUtils.dropTable(conexion, TipoPersonalizacion.class, true);
+            for (Class entidad : BD.ENTIDADES) {
+                TableUtils.dropTable(conexion, entidad, true);
+            }
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudieron eliminar las tablas&error=" + ex.getMessage());
