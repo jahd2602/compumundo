@@ -84,6 +84,7 @@ public class InsertarEjemplosBD extends HttpServlet {
         }
         //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Agregar Categoria Desktop">
         Categoria cDesktop = new Categoria();
         cDesktop.setNombre("Desktop");
         try {
@@ -93,6 +94,19 @@ public class InsertarEjemplosBD extends HttpServlet {
                     + "?mensaje=No se pudo crear ejemplo en tabla Categoria&error=" + ex.getMessage());
             return;
         }
+        //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Agregar Categoria Laptop">
+        Categoria cLaptop = new Categoria();
+        cLaptop.setNombre("Laptop");
+        try {
+            bd.getCategoriaDao().create(cLaptop);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Categoria&error=" + ex.getMessage());
+            return;
+        }
+        //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc="Agregar Producto Computadora HP">
         Producto proComputadora = new Producto();
