@@ -41,7 +41,7 @@
                         <c:otherwise>
                             <jsp:useBean id="listaPersonalizacion" scope="application" class="upao.paw.compumundo.control.bean.BeanPersonalizacion"/>
                             <c:forEach var="tp" items="${tiposPersonalizacion}">
-                                <c:set var="listaPersonalizacion.idTipoPersonalizacion" value="${tp.id}"/>
+                                <jsp:setProperty name="listaPersonalizacion" property="idTipoPersonalizacion" value="${tp.id}"/>
                                 <div class="row">
                                     <div class="span4 offset1">
                                         <input type="radio" name="id" value="${tp.id}" />
