@@ -44,6 +44,60 @@ public class InsertarEjemplosBD extends HttpServlet {
         }
         //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Agregar TipoPersonalizacion Disco Duro">
+        TipoPersonalizacion tpDiscoDuro = new TipoPersonalizacion();
+        tpDiscoDuro.setNombre("Disco Duro");
+        try {
+            bd.getTipoPersonalizacionDao().create(tpDiscoDuro);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Tipo Personalizacion&error=" + ex.getMessage());
+            return;
+        }
+        //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Agregar Personalizacion Disco Duro de 1tb">
+        Personalizacion per1tb = new Personalizacion();
+        per1tb.setTipoPersonalizacion(tpDiscoDuro);
+        per1tb.setNombre("1tb");
+        per1tb.setPrecio(0);
+        try {
+            bd.getPersonalizacionDao().create(per1tb);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Personalizacion&error=" + ex.getMessage());
+            return;
+        }
+        //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Agregar Personalizacion Disco Duro de 2tb">
+        Personalizacion per2tb = new Personalizacion();
+        per2tb.setTipoPersonalizacion(tpDiscoDuro);
+        per2tb.setNombre("2tb");
+        per2tb.setPrecio(0);
+        try {
+            bd.getPersonalizacionDao().create(per2tb);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Personalizacion&error=" + ex.getMessage());
+            return;
+        }
+        //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Agregar Personalizacion Disco Duro de 500mb">
+        Personalizacion per500mb = new Personalizacion();
+        per500mb.setTipoPersonalizacion(tpDiscoDuro);
+        per500mb.setNombre("500mb");
+        per500mb.setPrecio(0);
+        try {
+            bd.getPersonalizacionDao().create(per500mb);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Personalizacion&error=" + ex.getMessage());
+            return;
+        }
+        //</editor-fold>
+
         //<editor-fold defaultstate="collapsed" desc="Agregar TipoPersonalizacion Pantalla">
         TipoPersonalizacion tpPantalla = new TipoPersonalizacion();
         tpPantalla.setNombre("Pantalla");
