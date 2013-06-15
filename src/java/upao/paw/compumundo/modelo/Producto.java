@@ -16,7 +16,7 @@ public class Producto {
     private String descripcion;
     @DatabaseField(canBeNull = false)
     private double precio_base;
-    @DatabaseField(canBeNull = false)
+    @DatabaseField(canBeNull = false, foreign = true)
     private Categoria categoria;
 
     public int getId() {
