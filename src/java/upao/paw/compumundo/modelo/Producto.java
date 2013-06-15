@@ -16,6 +16,8 @@ public class Producto {
     private String descripcion;
     @DatabaseField(canBeNull = false)
     private double precio_base;
+    @DatabaseField(canBeNull = false)
+    private Categoria categoria;
 
     public int getId() {
         return id;
@@ -39,5 +41,13 @@ public class Producto {
 
     public void setPrecio_base(double precio_base) {
         this.precio_base = precio_base;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }
