@@ -20,10 +20,35 @@
                 <div class="span4 offset2">
                     <div class="row">
                         <div class="btn-group btn-group-vertical">
-
-                            <a href="/cm/listarPorCategoria.jsp" class="span4 btn">Desktop</a>
-                            <a href="/cm/listarPorCategoria.jsp" class="span4 btn">Laptop</a>
-                            <a href="/cm/listarPorCategoria.jsp" class="span4 btn">Tablet</a>
+                            <jsp:useBean id="listaCategorias" scope="application" class="upao.paw.compumundo.control.bean.ListaCategorias"/>
+                            <c:catch var="ex">
+                                <c:set var="categorias" value="${listaCategorias.categorias}"/>
+                            </c:catch>
+                            <c:choose>
+                                <c:when test="${ex != null}">
+                                    <div class="row span12">
+                                        <div class="alert alert-danger">
+                                            No se pudo conectar a la base de datos
+                                        </div>
+                                    </div>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:choose>
+                                        <c:when test="${empty categorias}">
+                                            <div class="row">
+                                                <div class="offset1 lead">
+                                                    No hay ninguna Categoría
+                                                </div>
+                                            </div>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <c:forEach var="categoria" items="${categorias}">
+                                                <a href="/cm/listarPorCategoria.jsp?id=${categoria.id}" class="span4 btn">${categoria.nombre}</a>
+                                            </c:forEach>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:otherwise>
+                            </c:choose>
                         </div>
                     </div>
 
