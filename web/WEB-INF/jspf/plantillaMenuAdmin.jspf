@@ -3,7 +3,7 @@
 <div class = "navbar">
     <div class = "navbar-inner">
         <ul class = "nav">
-            <li> <a href = "/cm/admin/"><i class="icon-align-justify"></i> Menu </a></li>
+            <li> <a href = "/cm/admin/"><i class="icon-align-justify"></i> Menu Administrativo</a></li>
         </ul>
         <ul class = "nav pull-right">
             <li> <a href = "/cm/index.jsp"><i class="icon-share-alt"></i> Salir </a></li>
