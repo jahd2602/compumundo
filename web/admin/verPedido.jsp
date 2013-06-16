@@ -54,7 +54,7 @@
                             <strong>Fecha:</strong> 26/03/2013 TODO
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" style="padding-top: 20px">
                         <div class="well well-small span6 offset2">
                             <h4>Datos del Comprador</h4>
                             <ul>
