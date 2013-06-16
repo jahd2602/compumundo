@@ -299,7 +299,7 @@ public class InsertarEjemplosBD extends HttpServlet {
 
         //<editor-fold defaultstate="collapsed" desc="Relacionar Pedido con Comprador y Establecer Estado a Pedido">
         pedido.setComprador(comprador);
-        pedido.setEstado(Pedido.ESTADO_PEDIDO);
+        pedido.setEstado(Pedido.ESTADO_ACTIVO);
         try {
             bd.getPedidoDao().update(pedido);
         } catch (SQLException ex) {
