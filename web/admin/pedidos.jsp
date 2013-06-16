@@ -33,7 +33,7 @@
                     <c:choose>
                         <c:when test="${empty pedidos}">
                             <div class="span10 offset1 lead">
-                                No hay ninguna Categoría
+                                No hay ningun pedido activo
                             </div>
                         </c:when>
                         <c:otherwise>
