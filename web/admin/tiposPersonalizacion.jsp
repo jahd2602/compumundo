@@ -69,5 +69,6 @@
             </div>
 
         </div>
+        <%@include file="/WEB-INF/jspf/plantillaFooter.jspf" %>
     </body>
 </html>

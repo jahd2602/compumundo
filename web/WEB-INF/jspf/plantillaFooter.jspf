@@ -1,5 +1,5 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
 <div class="footer">
-    <p>JAHD Software &copy;</p>
+    <p>&copy; JAHD Software</p>
 </div>

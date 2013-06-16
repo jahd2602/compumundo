@@ -147,5 +147,6 @@
                 </c:otherwise>
             </c:choose>
         </div>
+        <%@include file="/WEB-INF/jspf/plantillaFooter.jspf" %>
     </body>
 </html>
