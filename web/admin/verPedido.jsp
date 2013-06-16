@@ -71,8 +71,8 @@
                             <table  class="table" align="center" cellspacing="5" cellpadding="5">
                                 <thead>
                                     <tr>
-                                        <th>Articulo</th>
-                                        <th>Personalizaciones</th>
+                                        <th>Producto (Precio Base)</th>
+                                        <th>Personalización (Adicional)</th>
                                         <th>Monto</th>
                                     </tr>
                                 </thead>
