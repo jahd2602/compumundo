@@ -6,14 +6,14 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable
 public class Pedido {
 
-    public static final int ESTADO_PEDIDO = 1;
-    public static final int ESTADO_CANCELADO = 2;
-    public static final int ESTADO_ENVIADO = 3;
+    public static final int ESTADO_ACTIVO = 0;
+    public static final int ESTADO_CANCELADO = 1;
+    public static final int ESTADO_ARCHIVADO = 2;
     @DatabaseField(generatedId = true)
     private int id;
     @DatabaseField(foreign = true)
     private Comprador comprador;
-    @DatabaseField(defaultValue = "1")
+    @DatabaseField(defaultValue = "0")
     private Integer estado;
 
     public int getId() {
