@@ -14,7 +14,7 @@ import upao.paw.compumundo.modelo.Personalizacion;
 public class BeanConfiguracion {
 
     Dao<Configuracion, Integer> configuracionDao;
-    private int lineaPedidoId; // TODO deberia ser linea pedido
+    private int lineaPedidoId;
 
     public BeanConfiguracion() throws SQLException {
 
@@ -31,9 +31,24 @@ public class BeanConfiguracion {
     }
 
     public double getMontoPorLineaPedidoId() throws SQLException {
+
+        Personalizacion per = getPersonalizacionPorLineaPedidoId();
+        if (per != null) {
+            return per.getPrecio();
+        }
+        throw new SQLException("No se encontro LineaPedido o Personalizacion");
+    }
+
+    public Personalizacion getPersonalizacionPorLineaPedidoId() throws SQLException {
         Personalizacion per = getConfiguracionPorProductoId().getPersonalizacion();
         BD.getInstance().getPersonalizacionDao().refresh(per);
-        return per.getPrecio();
+        return per;
+    }
+
+    public Personalizacion getPersonalizacionRefreshTipoPorLineaPedidoId() throws SQLException {
+        Personalizacion per = getPersonalizacionPorLineaPedidoId();
+        BD.getInstance().getTipoPersonalizacionDao().refresh(per.getTipoPersonalizacion());
+        return per;
     }
 
     public int getLineaPedidoId() {

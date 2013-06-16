@@ -14,9 +14,16 @@ import upao.paw.compumundo.modelo.Pedido;
 public class BeanPedidos {
 
     Dao<Pedido, Integer> pedidoDao;
+    int idPedido;
 
     public BeanPedidos() throws SQLException {
         pedidoDao = BD.getInstance().getPedidoDao();
+    }
+
+    public Pedido getPedidoRefreshComprador() throws SQLException {
+        Pedido ret = pedidoDao.queryForId(idPedido);
+        BD.getInstance().getCompradorDao().refresh(ret.getComprador());
+        return ret;
     }
 
     public List<Pedido> getPedidos() throws SQLException {
@@ -40,5 +47,13 @@ public class BeanPedidos {
             BD.getInstance().getCompradorDao().refresh(pedido.getComprador());
         }
         return lista;
+    }
+
+    public int getIdPedido() {
+        return idPedido;
+    }
+
+    public void setIdPedido(int idPedido) {
+        this.idPedido = idPedido;
     }
 }

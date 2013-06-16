@@ -15,6 +15,7 @@ public class BeanLineaPedidos {
 
     Dao<LineaPedido, Integer> lineaPedidoDao;
     private int idPedido;
+    private int idLineaPedido;
 
     public BeanLineaPedidos() throws SQLException {
         lineaPedidoDao = BD.getInstance().getLineaPedidoDao();
@@ -35,18 +36,39 @@ public class BeanLineaPedidos {
         return lineaPedidoDao.queryForEq("pedido_id", idPedido);
     }
 
+    public List<LineaPedido> getLineasPedidoRefreshProductoPorIdPedido() throws SQLException {
+        List<LineaPedido> ret = lineaPedidoDao.queryForEq("pedido_id", idPedido);
+        Dao<Producto, Integer> productoDao = BD.getInstance().getProductoDao();
+        for (LineaPedido lp : ret) {
+            productoDao.refresh(lp.getProducto());
+        }
+        return ret;
+    }
+
     public double getMontoTotalPorIdPedido() throws SQLException {
         double ret = 0;
         List<LineaPedido> todos = getLineasPedidoPorIdPedido();
         BeanConfiguracion beanConf = new BeanConfiguracion();
         Producto actual;
+        Dao<Producto, Integer> productoDao = BD.getInstance().getProductoDao();
         for (LineaPedido linea : todos) {
             actual = linea.getProducto();
-            BD.getInstance().getProductoDao().refresh(actual);
+            productoDao.refresh(actual);
             ret += actual.getPrecio_base();
             beanConf.setLineaPedidoId(linea.getId());
             ret += beanConf.getMontoPorLineaPedidoId();
         }
+        return ret;
+    }
+
+    public double getMontoPorIdLineaPedido() throws SQLException {
+        BeanConfiguracion beanConf = new BeanConfiguracion();
+        LineaPedido linea = lineaPedidoDao.queryForId(idLineaPedido);
+        Producto actual = linea.getProducto();
+        BD.getInstance().getProductoDao().refresh(actual);
+        double ret = actual.getPrecio_base();
+        beanConf.setLineaPedidoId(linea.getId());
+        ret += beanConf.getMontoPorLineaPedidoId();
         return ret;
     }
 
@@ -56,5 +78,13 @@ public class BeanLineaPedidos {
 
     public void setIdPedido(int idPedido) {
         this.idPedido = idPedido;
+    }
+
+    public int getIdLineaPedido() {
+        return idLineaPedido;
+    }
+
+    public void setIdLineaPedido(int idLineaPedido) {
+        this.idLineaPedido = idLineaPedido;
     }
 }
