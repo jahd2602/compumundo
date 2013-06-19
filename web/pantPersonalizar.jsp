@@ -12,17 +12,15 @@
                     <h3>Personalizar Producto</h3>
                 </div>
             </div>
-            <jsp:useBean id="listaConfiguracionInicial" scope="application" class="upao.paw.compumundo.control.bean.BeanConfiguracionInicial"/>
+            <jsp:useBean id="listaConfiguracion" scope="application" class="upao.paw.compumundo.control.bean.BeanConfiguracion"/>
             <jsp:useBean id="listaProductos" scope="application" class="upao.paw.compumundo.control.bean.BeanProductos"/>
             <jsp:useBean id="listaPersonalizaciones" scope="application" class="upao.paw.compumundo.control.bean.BeanPersonalizacion"/>
             <jsp:useBean id="listaLineaPedidos" scope="application" class="upao.paw.compumundo.control.bean.BeanLineaPedidos"/>
             <jsp:setProperty name="listaLineaPedidos" property="idLineaPedido" param="id"/>
             <c:catch var="ex">
                 <c:set var="producto" value="${listaLineaPedidos.productoPorIdLineaPedido}"/>
-                <jsp:setProperty name="listaConfiguracionInicial" property="productoId" value="${producto.id}"/>
-                <jsp:setProperty name="listaProductos" property="idProducto" value="${producto.id}"/>
-                <c:set var="productoUnused" value="${listaProductos.productoPorId}"/>
-                <c:set var="personalizacion" value="${listaConfiguracionInicial.personalizacionRefreshTipoPorProductoId}"/>
+                <jsp:setProperty name="listaConfiguracion" property="lineaPedidoId" param="id"/>
+                <c:set var="personalizacion" value="${listaConfiguracion.personalizacionRefreshTipoPorLineaPedidoId}"/>
                 <jsp:setProperty name="listaPersonalizaciones" property="idTipoPersonalizacion" value="${personalizacion.tipoPersonalizacion.id}"/>
                 <c:set var="personalizaciones" value="${listaPersonalizaciones.personalizacionesPorTipo}"/>
             </c:catch>
@@ -80,8 +78,9 @@
                                         <a class="btn btn-primary">Agregar Al Carro</a>
                                     </div>
 
-                                    <div class="span2 offset2">
-                                        <button type="submit" class="span2 btn">Realizar Cambios</button>
+                                        <div class="span2 offset2">
+                                            <input type="hidden" name="id" value="${param.id}"/>
+                                            <button type="submit" class="span2 btn">Realizar Cambios</button>
                                     </div>
                                 </div>
                             </form>

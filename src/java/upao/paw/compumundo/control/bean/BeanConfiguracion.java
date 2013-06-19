@@ -15,11 +15,26 @@ public class BeanConfiguracion {
 
     Dao<Configuracion, Integer> configuracionDao;
     private int lineaPedidoId;
+    private int configuracionId;
 
     public BeanConfiguracion() throws SQLException {
 
         configuracionDao = BD.getInstance().getConfiguracionDao();
     }
+
+    public Personalizacion getPersonalizacionPorConfiguracionId() throws SQLException {
+        Configuracion conf = configuracionDao.queryForId(configuracionId);
+        Personalizacion per = conf.getPersonalizacion();
+        BD.getInstance().getPersonalizacionDao().refresh(per);
+        return per;
+    }
+
+    public Personalizacion getPersonalizacionRefreshTipoPorConfiguracionId() throws SQLException {
+        Personalizacion per = getPersonalizacionPorConfiguracionId();
+        BD.getInstance().getTipoPersonalizacionDao().refresh(per.getTipoPersonalizacion());
+        return per;
+    }
+
 
     public List<Configuracion> getConfiguraciones() throws SQLException {
         return configuracionDao.queryForAll();
@@ -57,5 +72,13 @@ public class BeanConfiguracion {
 
     public void setLineaPedidoId(int lineaPedidoId) {
         this.lineaPedidoId = lineaPedidoId;
+    }
+
+    public int getConfiguracionId() {
+        return configuracionId;
+    }
+
+    public void setConfiguracionId(int configuracionId) {
+        this.configuracionId = configuracionId;
     }
 }
