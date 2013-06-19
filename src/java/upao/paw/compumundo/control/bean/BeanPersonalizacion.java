@@ -23,6 +23,10 @@ public class BeanPersonalizacion {
         return personalizacionDao.queryForAll();
     }
 
+    public List<Personalizacion> getPersonalizacionesPorTipo() throws SQLException {
+        return personalizacionDao.queryForEq("tipoPersonalizacion_id", idTipoPersonalizacion);
+    }
+
     public long getCantidadPorTipo() throws SQLException {
         long resultado = personalizacionDao.queryBuilder().setCountOf(true)
                 .selectColumns().where().eq("tipoPersonalizacion_id",
