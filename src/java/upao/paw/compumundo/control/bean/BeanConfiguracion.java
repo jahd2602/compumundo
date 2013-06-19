@@ -25,7 +25,7 @@ public class BeanConfiguracion {
         return configuracionDao.queryForAll();
     }
 
-    public Configuracion getConfiguracionPorProductoId()
+    public Configuracion getConfiguracionPorLineaPedidoId()
             throws SQLException, IndexOutOfBoundsException {
         return configuracionDao.queryForEq("lineaPedido_id", lineaPedidoId).get(0);
     }
@@ -40,7 +40,7 @@ public class BeanConfiguracion {
     }
 
     public Personalizacion getPersonalizacionPorLineaPedidoId() throws SQLException {
-        Personalizacion per = getConfiguracionPorProductoId().getPersonalizacion();
+        Personalizacion per = getConfiguracionPorLineaPedidoId().getPersonalizacion();
         BD.getInstance().getPersonalizacionDao().refresh(per);
         return per;
     }
