@@ -15,10 +15,13 @@
             <jsp:useBean id="listaConfiguracionInicial" scope="application" class="upao.paw.compumundo.control.bean.BeanConfiguracionInicial"/>
             <jsp:useBean id="listaProductos" scope="application" class="upao.paw.compumundo.control.bean.BeanProductos"/>
             <jsp:useBean id="listaPersonalizaciones" scope="application" class="upao.paw.compumundo.control.bean.BeanPersonalizacion"/>
-            <jsp:setProperty name="listaConfiguracionInicial" property="productoId" param="id"/>
-            <jsp:setProperty name="listaProductos" property="idProducto" param="id"/>
+            <jsp:useBean id="listaLineaPedidos" scope="application" class="upao.paw.compumundo.control.bean.BeanLineaPedidos"/>
+            <jsp:setProperty name="listaLineaPedidos" property="idLineaPedido" param="id"/>
             <c:catch var="ex">
-                <c:set var="producto" value="${listaProductos.productoPorId}"/>
+                <c:set var="producto" value="${listaLineaPedidos.productoPorIdLineaPedido}"/>
+                <jsp:setProperty name="listaConfiguracionInicial" property="productoId" value="${producto.id}"/>
+                <jsp:setProperty name="listaProductos" property="idProducto" value="${producto.id}"/>
+                <c:set var="productoUnused" value="${listaProductos.productoPorId}"/>
                 <c:set var="personalizacion" value="${listaConfiguracionInicial.personalizacionRefreshTipoPorProductoId}"/>
                 <jsp:setProperty name="listaPersonalizaciones" property="idTipoPersonalizacion" value="${personalizacion.tipoPersonalizacion.id}"/>
                 <c:set var="personalizaciones" value="${listaPersonalizaciones.personalizacionesPorTipo}"/>
@@ -27,7 +30,7 @@
                 <c:when test="${ex != null}">
                     <div class="span10">
                         <div class="alert alert-danger">
-                            No se pudo conectar a la base de datos
+                            No se pudo conectar a la base de datos. Excepcion: ${ex.message}
                         </div>
                     </div>
                 </c:when>

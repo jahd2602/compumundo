@@ -101,7 +101,7 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="span2 offset5">
-                                                        <a href="/cm/pantPersonalizar.jsp?id=${producto.id}" class="btn btn-primary btn-block">Personalizar</a>
+                                                        <a href="/cm/servlet/Personalizar?id=${producto.id}" class="btn btn-primary btn-block">Personalizar</a>
                                                     </div>
                                                 </div>
                                             </div>

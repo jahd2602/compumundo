@@ -61,9 +61,19 @@ public class BeanLineaPedidos {
         return ret;
     }
 
+    public LineaPedido getLineaPedidoPorId() throws SQLException {
+        return lineaPedidoDao.queryForId(idLineaPedido);
+    }
+
+    public Producto getProductoPorIdLineaPedido() throws SQLException {
+        LineaPedido lp = getLineaPedidoPorId();
+        BD.getInstance().getProductoDao().refresh(lp.getProducto());
+        return lp.getProducto();
+    }
+
     public double getMontoPorIdLineaPedido() throws SQLException {
         BeanConfiguracion beanConf = new BeanConfiguracion();
-        LineaPedido linea = lineaPedidoDao.queryForId(idLineaPedido);
+        LineaPedido linea = getLineaPedidoPorId();
         Producto actual = linea.getProducto();
         BD.getInstance().getProductoDao().refresh(actual);
         double ret = actual.getPrecio_base();

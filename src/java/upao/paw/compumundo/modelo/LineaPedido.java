@@ -10,7 +10,7 @@ public class LineaPedido {
     private int id;
     @DatabaseField(foreign = true)
     private Pedido pedido;
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, canBeNull = false)
     private Producto producto;
 
     public int getId() {
