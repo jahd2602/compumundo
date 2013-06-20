@@ -62,6 +62,31 @@
                                     <strong>Nombre:</strong>
                                     ${pedido.comprador.nombre}
                                 </li>
+                                <li>
+                                    <strong>Apellido:</strong>
+                                    ${pedido.comprador.apellido}
+                                </li>
+                                <li>
+                                    <strong>Direccion:</strong>
+                                    ${pedido.comprador.direccion}
+                                </li>
+                                <li>
+                                    <strong>Ciudad:</strong>
+                                    ${pedido.comprador.ciudad}
+                                </li>
+                                <li>
+                                    <strong>Region:</strong>
+                                    ${pedido.comprador.region}
+                                </li>
+                                <li>
+                                    <strong>Tipo Tarjeta:</strong>
+                                    ${pedido.comprador.tipoTarjeta}
+                                </li>
+                                <li>
+                                    <strong>Numero Tarjeta:</strong>
+                                    ${pedido.comprador.numeroTarjeta}
+                                </li>
+
                             </ul>
 
                         </div>

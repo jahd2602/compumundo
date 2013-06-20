@@ -287,7 +287,13 @@ public class InsertarEjemplosBD extends HttpServlet {
 
         //<editor-fold defaultstate="collapsed" desc="Crear Comprador">
         Comprador comprador = new Comprador();
-        comprador.setNombre("John Perez");
+        comprador.setNombre("John");
+        comprador.setApellido("Perez");
+        comprador.setDireccion("Av. America");
+        comprador.setCiudad("Trujillo");
+        comprador.setRegion("La Libertad");
+        comprador.setTipoTarjeta("Visa");
+        comprador.setNumeroTarjeta("9516546541");
         try {
             bd.getCompradorDao().create(comprador);
         } catch (SQLException ex) {
