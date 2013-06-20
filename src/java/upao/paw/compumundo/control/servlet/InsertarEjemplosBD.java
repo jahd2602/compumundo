@@ -191,6 +191,7 @@ public class InsertarEjemplosBD extends HttpServlet {
 
         //<editor-fold defaultstate="collapsed" desc="Crear Pedido">
         Pedido pedido = new Pedido();
+        pedido.setFecha("12/12/2012");
         try {
             bd.getPedidoDao().create(pedido);
         } catch (SQLException ex) {

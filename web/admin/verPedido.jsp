@@ -51,7 +51,7 @@
                             </c:choose>
                         </div>
                         <div class="span3">
-                            <strong>Fecha:</strong> 26/03/2013 TODO
+                            <strong>Fecha:</strong> ${pedido.fecha}
                         </div>
                     </div>
                     <div class="row" style="padding-top: 20px">

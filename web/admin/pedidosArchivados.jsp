@@ -64,7 +64,7 @@
                                                         <td><input type="radio" name="id" value="${pedido.id}" /> </td>
                                                         <td>${listaLineaPedido.cantidadPorIdPedido} Productos</td>
                                                         <td>${pedido.comprador.nombre}</td>
-                                                        <td>26/03/2013</td>
+                                                        <td>${pedido.fecha}</td>
                                                         <td>S/. ${listaLineaPedido.montoTotalPorIdPedido}</td>
                                                     </tr>
                                                 </c:forEach>
