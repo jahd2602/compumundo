@@ -44,5 +44,6 @@
             <div class="span4"></div>
 
         </div>
+        <%@include file="/WEB-INF/jspf/plantillaFooter.jspf" %>
     </body>
 </html>

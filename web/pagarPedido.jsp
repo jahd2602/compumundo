@@ -73,12 +73,7 @@
 
 
                 <div class="span4 offset3">
-                    <a class="btn">Agregar</a>
-                </div>
-
-                <!se parteee>
-                <div class="span4">
-                    <a class="btn">Seguir Comprando</a>
+                    <a class="btn btn-primary">Enviar Pedido</a>
                 </div>
 
 
@@ -86,6 +81,6 @@
 
 
         </div>
-
+        <%@include file="/WEB-INF/jspf/plantillaFooter.jspf" %>
     </body>
 </html>
