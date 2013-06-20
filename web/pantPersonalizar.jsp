@@ -23,6 +23,7 @@
                 <c:set var="personalizacion" value="${listaConfiguracion.personalizacionRefreshTipoPorLineaPedidoId}"/>
                 <jsp:setProperty name="listaPersonalizaciones" property="idTipoPersonalizacion" value="${personalizacion.tipoPersonalizacion.id}"/>
                 <c:set var="personalizaciones" value="${listaPersonalizaciones.personalizacionesPorTipo}"/>
+                <c:set var="monto" value="${listaLineaPedidos.montoPorIdLineaPedido}"/>
             </c:catch>
             <c:choose>
                 <c:when test="${ex != null}">
@@ -52,15 +53,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <form method="get" action="/cm/servlet/Cambiar">
-                                <div class="row">
+                                    <form method="get" action="/cm/servlet/CambiarConfiguracion">
+                                        <div class="row">
                                     <div class="span2 offset2">${personalizacion.tipoPersonalizacion.nombre} </div>
                                     <div class="span2"> ${personalizacion.nombre} </div>
                                     <div class="span2">S/ ${personalizacion.precio} </div>
                                     <div class="span4">
-                                        <select name="idCambio">
+                                        <select name="idCambia">
                                             <c:forEach var="per" items="${personalizaciones}">
-                                                <option value="${per.id}">${per.nombre}</option>
+                                                <option ${per.id==personalizacion.id?'selected':''} value="${per.id}">${per.nombre}</option>
                                             </c:forEach>
                                         </select>
                                     </div>
@@ -68,14 +69,14 @@
                                 <div class="row">
                                     <div class="span1 offset4"><strong>Total:</strong></div>
 
-                                    <div class="span2 offset1"> S/ 999 </div>
+                                    <div class="span2 offset1"> S/ ${monto} </div>
 
                                 </div>
 
                                     <div class="row" style="margin-top: 20px">
 
                                     <div class="span2 offset4">
-                                        <a class="btn btn-primary">Agregar Al Carro</a>
+                                        <a href="/cm/servlet/AgregarAlCarrito?id=${param.id}" class="btn btn-primary">Agregar Al Carro</a>
                                     </div>
 
                                         <div class="span2 offset2">

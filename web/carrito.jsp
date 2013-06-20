@@ -17,7 +17,11 @@
                 </div>
             </div>
             <div class="row">
-                Carrito
+                <jsp:useBean id="carrito" scope="page" class="upao.paw.compumundo.Carrito"/>
+                <%
+                    carrito.setSesion(session);
+                %>
+                items: ${carrito.items}
             </div>
         </div>
         <%@include file="/WEB-INF/jspf/plantillaFooter.jspf" %>
