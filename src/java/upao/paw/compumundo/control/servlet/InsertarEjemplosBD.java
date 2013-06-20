@@ -151,10 +151,82 @@ public class InsertarEjemplosBD extends HttpServlet {
         //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc="Agregar Categoria Laptop">
-        Categoria cLaptop = new Categoria();
-        cLaptop.setNombre("Laptop");
+        Categoria cTemp = new Categoria();
+        cTemp.setNombre("Laptop");
         try {
-            bd.getCategoriaDao().create(cLaptop);
+            bd.getCategoriaDao().create(cTemp);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Categoria&error=" + ex.getMessage());
+            return;
+        }
+        //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Agregar Categoria Netbook">
+        cTemp = new Categoria();
+        cTemp.setNombre("Netbook");
+        try {
+            bd.getCategoriaDao().create(cTemp);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Categoria&error=" + ex.getMessage());
+            return;
+        }
+        //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Agregar Categoria Tablet">
+        cTemp = new Categoria();
+        cTemp.setNombre("Tablet");
+        try {
+            bd.getCategoriaDao().create(cTemp);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Categoria&error=" + ex.getMessage());
+            return;
+        }
+        //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Agregar Categoria Videojuegos">
+        cTemp = new Categoria();
+        cTemp.setNombre("Videojuegos");
+        try {
+            bd.getCategoriaDao().create(cTemp);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Categoria&error=" + ex.getMessage());
+            return;
+        }
+        //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Agregar Categoria Impresoras">
+        cTemp = new Categoria();
+        cTemp.setNombre("Impresoras");
+        try {
+            bd.getCategoriaDao().create(cTemp);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Categoria&error=" + ex.getMessage());
+            return;
+        }
+        //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Agregar Categoria EReaders">
+        cTemp = new Categoria();
+        cTemp.setNombre("EReaders");
+        try {
+            bd.getCategoriaDao().create(cTemp);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Categoria&error=" + ex.getMessage());
+            return;
+        }
+        //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Agregar Categoria Accesorios">
+        cTemp = new Categoria();
+        cTemp.setNombre("Accesorios");
+        try {
+            bd.getCategoriaDao().create(cTemp);
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudo crear ejemplo en tabla Categoria&error=" + ex.getMessage());
@@ -191,6 +263,7 @@ public class InsertarEjemplosBD extends HttpServlet {
 
         //<editor-fold defaultstate="collapsed" desc="Crear Pedido">
         Pedido pedido = new Pedido();
+        pedido.setFecha("12/12/2012");
         try {
             bd.getPedidoDao().create(pedido);
         } catch (SQLException ex) {
@@ -287,7 +360,13 @@ public class InsertarEjemplosBD extends HttpServlet {
 
         //<editor-fold defaultstate="collapsed" desc="Crear Comprador">
         Comprador comprador = new Comprador();
-        comprador.setNombre("John Perez");
+        comprador.setNombre("John");
+        comprador.setApellido("Perez");
+        comprador.setDireccion("Av. America");
+        comprador.setCiudad("Trujillo");
+        comprador.setRegion("La Libertad");
+        comprador.setTipoTarjeta("Visa");
+        comprador.setNumeroTarjeta("9516546541");
         try {
             bd.getCompradorDao().create(comprador);
         } catch (SQLException ex) {

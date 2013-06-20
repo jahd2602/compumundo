@@ -37,13 +37,13 @@
                             <strong>Estado:</strong>
                             <c:choose>
                                 <c:when test="${pedido.estado eq 0}">
-                                    Activo
+                                    Activo <a href="/cm/AccionesPedido?accion=Archivar&id=${pedido.id}" class="btn btn-mini">Archivar</a>
                                 </c:when>
                                 <c:when test="${pedido.estado eq 1}">
                                     Cancelado
                                 </c:when>
                                 <c:when test="${pedido.estado eq 2}">
-                                    Archivado
+                                    Archivado <a href="/cm/AccionesPedido?accion=Activar&id=${pedido.id}" class="btn btn-mini">Activar</a>
                                 </c:when>
                                 <c:otherwise>
                                     Desconocido
@@ -51,7 +51,7 @@
                             </c:choose>
                         </div>
                         <div class="span3">
-                            <strong>Fecha:</strong> 26/03/2013 TODO
+                            <strong>Fecha:</strong> ${pedido.fecha}
                         </div>
                     </div>
                     <div class="row" style="padding-top: 20px">
@@ -62,6 +62,31 @@
                                     <strong>Nombre:</strong>
                                     ${pedido.comprador.nombre}
                                 </li>
+                                <li>
+                                    <strong>Apellido:</strong>
+                                    ${pedido.comprador.apellido}
+                                </li>
+                                <li>
+                                    <strong>Direccion:</strong>
+                                    ${pedido.comprador.direccion}
+                                </li>
+                                <li>
+                                    <strong>Ciudad:</strong>
+                                    ${pedido.comprador.ciudad}
+                                </li>
+                                <li>
+                                    <strong>Region:</strong>
+                                    ${pedido.comprador.region}
+                                </li>
+                                <li>
+                                    <strong>Tipo Tarjeta:</strong>
+                                    ${pedido.comprador.tipoTarjeta}
+                                </li>
+                                <li>
+                                    <strong>Numero Tarjeta:</strong>
+                                    ${pedido.comprador.numeroTarjeta}
+                                </li>
+
                             </ul>
 
                         </div>
@@ -134,14 +159,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="span2 offset3">
-                            <a href="/cm/admin/pedidos.jsp" class="btn btn-block">Aceptar</a>
-                        </div>
-                        <div class="span2 offset1">
-                            <a href="/cm/AccionesPedido?accion=Archivar&id=${pedido.id}" class="btn btn-block">Archivar</a>
                         </div>
                     </div>
                 </c:otherwise>

@@ -15,6 +15,8 @@ public class Pedido {
     private Comprador comprador;
     @DatabaseField(defaultValue = "0")
     private Integer estado;
+    @DatabaseField
+    private String fecha;
 
     public int getId() {
         return id;
@@ -38,5 +40,13 @@ public class Pedido {
 
     public void setEstado(Integer estado) {
         this.estado = estado;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 }

@@ -9,16 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import upao.paw.compumundo.BD;
-import upao.paw.compumundo.modelo.Pedido;
+import upao.paw.compumundo.modelo.Configuracion;
+import upao.paw.compumundo.modelo.ConfiguracionInicial;
+import upao.paw.compumundo.modelo.LineaPedido;
+import upao.paw.compumundo.modelo.Producto;
 
 /**
  *
  * @author jahd
  */
-@WebServlet(name = "ArchivarPedido", urlPatterns = {"/servlet/ArchivarPedido"})
-public class ArchivarPedido extends HttpServlet {
+@WebServlet(name = "Personalizar", urlPatterns = {"/servlet/Personalizar"})
+public class Personalizar extends HttpServlet {
 
-    private static final String REDIRECCION = "/cm/admin/pedidos.jsp";
+    private static final String REDIRECCION = "/cm/";
 
     /**
      * Processes requests for both HTTP
@@ -35,41 +38,61 @@ public class ArchivarPedido extends HttpServlet {
         String id = request.getParameter("id");
         if (id == null || id.isEmpty()) {
             response.sendRedirect(REDIRECCION
-                    + "?mensaje=No se pudo archivar el pedido&error=Falta el parametro id");
+                    + "?mensaje=No se puede personalizar&error=Falta el parametro id");
             return;
         }
 
-        String redireccion = "/cm/admin/verPedido.jsp?id=" + id;
-
-        Dao<Pedido, Integer> pedidoDao;
+        Dao<Producto, Integer> productoDao;
+        Dao<Configuracion, Integer> configuracionDao;
+        Dao<ConfiguracionInicial, Integer> configuracionInicialDao;
+        Dao<LineaPedido, Integer> lineaPedidoDao;
         try {
-            pedidoDao = BD.getInstance().getPedidoDao();
+            configuracionInicialDao = BD.getInstance().getConfiguracionInicialDao();
+            configuracionDao = BD.getInstance().getConfiguracionDao();
+            lineaPedidoDao = BD.getInstance().getLineaPedidoDao();
+            productoDao = BD.getInstance().getProductoDao();
         } catch (SQLException ex) {
-            response.sendRedirect(redireccion
-                    + "&mensaje=No se pudo conectar a la base de datos&error=" + ex.getMessage());
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo conectar a la base de datos&error=" + ex.getMessage());
             return;
         }
 
-        int iid = new Integer(id);
-        Pedido pedido;
+        int productoId = new Integer(id);
+        Producto prod = new Producto();
+        prod.setId(productoId);
+//        try {
+//            productoDao.refresh(prod);
+//        } catch (SQLException ex) {
+//            response.sendRedirect(REDIRECCION
+//                    + "?mensaje=No se pudo refrescar producto&error=" + ex.getMessage());
+//            return;
+//        }
+        LineaPedido lp = new LineaPedido();
+        lp.setProducto(prod);
         try {
-            pedido = pedidoDao.queryForId(iid);
+            lineaPedidoDao.create(lp);
         } catch (SQLException ex) {
-            response.sendRedirect(redireccion
-                    + "&mensaje=No se pudo consultar pedido&error=" + ex.getMessage());
-            return;
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear lineaPedido&error=" + ex.getMessage());
         }
-        pedido.setEstado(Pedido.ESTADO_ARCHIVADO);
+        ConfiguracionInicial ci = new ConfiguracionInicial();
         try {
-            pedidoDao.update(pedido);
+            ci = configuracionInicialDao.queryForEq("producto_id", productoId).get(0);
         } catch (SQLException ex) {
-            response.sendRedirect(redireccion
-                    + "&mensaje=No se pudo actualizar pedido&error=" + ex.getMessage());
-            return;
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo obtener configuracion inicial&error=" + ex.getMessage());
+        }
+        Configuracion configuracion = new Configuracion();
+        configuracion.setLineaPedido(lp);
+        configuracion.setPersonalizacion(ci.getPersonalizacion());
+        try {
+            configuracionDao.create(configuracion);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear configuracion&error=" + ex.getMessage());
         }
 
-        response.sendRedirect(redireccion
-                + "&mensaje=Pedido archivado");
+        response.sendRedirect("/cm/pantPersonalizar.jsp?id=" + configuracion.getId());
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

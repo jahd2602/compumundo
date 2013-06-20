@@ -14,9 +14,14 @@ public class BeanProductos {
 
     Dao<Producto, Integer> productoDao;
     private int idCategoria;
+    private int idProducto;
 
     public BeanProductos() throws SQLException {
         productoDao = BD.getInstance().getProductoDao();
+    }
+
+    public Producto getProductoPorId() throws SQLException {
+        return productoDao.queryForId(idProducto);
     }
 
     public List<Producto> getProductos() throws SQLException {
@@ -33,5 +38,13 @@ public class BeanProductos {
 
     public void setIdCategoria(int idCategoria) {
         this.idCategoria = idCategoria;
+    }
+
+    public int getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
     }
 }

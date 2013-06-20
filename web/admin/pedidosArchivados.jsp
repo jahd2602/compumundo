@@ -12,19 +12,19 @@
             <%@include file="/WEB-INF/jspf/plantillaMenuAdmin.jspf"%>
             <div class="row">
                 <div class="span11 offset1">
-                    <h3>Administrar Pedidos</h3>
+                    <h3>Administrar Pedidos Archivados</h3> 
                 </div>
             </div>
             <div class="row">
                 <div class="span3 offset9">
-                    <a href="/cm/admin/pedidosArchivados.jsp">Ver Pedidos Archivados</a>
+                    <a href="/cm/admin/pedidos.jsp">Ver Pedidos Activos</a>
                 </div>
             </div>
             <%--Una Vez Creada la DB Recibir datos y ponerlos en las sgts. Variables--%>
 
             <jsp:useBean id="listaPedidos" scope="application" class="upao.paw.compumundo.control.bean.BeanPedidos"/>
             <c:catch var="ex">
-                <c:set var="pedidos" value="${listaPedidos.pedidosRefreshComprador}"/>
+                <c:set var="pedidos" value="${listaPedidos.pedidosArchivadosRefreshComprador}"/>
             </c:catch>
             <c:choose>
                 <c:when test="${ex != null}">
@@ -63,7 +63,7 @@
                                                     <tr>
                                                         <td><input type="radio" name="id" value="${pedido.id}" /> </td>
                                                         <td>${listaLineaPedido.cantidadPorIdPedido} Productos</td>
-                                                        <td>${pedido.comprador.nombre} ${pedido.comprador.apellido}</td>
+                                                        <td>${pedido.comprador.nombre}</td>
                                                         <td>${pedido.fecha}</td>
                                                         <td>S/. ${listaLineaPedido.montoTotalPorIdPedido}</td>
                                                     </tr>
@@ -80,7 +80,7 @@
                                 <div class="row offset1">
                                     <div class="span2 btn-group btn-group-vertical">
                                         <input class="btn btn-block" type="submit" name="accion" value="Detalle"/>
-                                        <input class="btn btn-block" type="submit" name="accion" value="Archivar"/>
+                                        <input class="btn btn-block" type="submit" name="accion" value="Activar"/>
                                     </div>
                                 </div>
                             </form>

@@ -1,24 +1,22 @@
 package upao.paw.compumundo.control.servlet;
 
-import com.j256.ormlite.dao.Dao;
 import java.io.IOException;
-import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import upao.paw.compumundo.BD;
-import upao.paw.compumundo.modelo.Pedido;
+import upao.paw.compumundo.Carrito;
 
 /**
  *
  * @author jahd
  */
-@WebServlet(name = "ArchivarPedido", urlPatterns = {"/servlet/ArchivarPedido"})
-public class ArchivarPedido extends HttpServlet {
+@WebServlet(name = "AgregarAlCarrito", urlPatterns = {"/servlet/AgregarAlCarrito"})
+public class AgregarAlCarrito extends HttpServlet {
 
-    private static final String REDIRECCION = "/cm/admin/pedidos.jsp";
+    private static final String REDIRECCION = "/cm/carrito.jsp";
 
     /**
      * Processes requests for both HTTP
@@ -35,41 +33,19 @@ public class ArchivarPedido extends HttpServlet {
         String id = request.getParameter("id");
         if (id == null || id.isEmpty()) {
             response.sendRedirect(REDIRECCION
-                    + "?mensaje=No se pudo archivar el pedido&error=Falta el parametro id");
+                    + "?mensaje=No se pudo agregar al carrito&error=Falta el parametro id");
             return;
         }
 
-        String redireccion = "/cm/admin/verPedido.jsp?id=" + id;
-
-        Dao<Pedido, Integer> pedidoDao;
-        try {
-            pedidoDao = BD.getInstance().getPedidoDao();
-        } catch (SQLException ex) {
-            response.sendRedirect(redireccion
-                    + "&mensaje=No se pudo conectar a la base de datos&error=" + ex.getMessage());
-            return;
-        }
-
+        Carrito carrito = new Carrito();
+        carrito.setSesion(request.getSession());
+        List<Integer> items = carrito.getItems();
         int iid = new Integer(id);
-        Pedido pedido;
-        try {
-            pedido = pedidoDao.queryForId(iid);
-        } catch (SQLException ex) {
-            response.sendRedirect(redireccion
-                    + "&mensaje=No se pudo consultar pedido&error=" + ex.getMessage());
-            return;
+        if (!items.contains(iid)) {
+            items.add(iid);
+            carrito.setItems(items);
         }
-        pedido.setEstado(Pedido.ESTADO_ARCHIVADO);
-        try {
-            pedidoDao.update(pedido);
-        } catch (SQLException ex) {
-            response.sendRedirect(redireccion
-                    + "&mensaje=No se pudo actualizar pedido&error=" + ex.getMessage());
-            return;
-        }
-
-        response.sendRedirect(redireccion
-                + "&mensaje=Pedido archivado");
+        response.sendRedirect(REDIRECCION                    + "?mensaje=Articulo agregado al carrito");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
