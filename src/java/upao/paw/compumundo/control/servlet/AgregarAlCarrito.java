@@ -41,15 +41,11 @@ public class AgregarAlCarrito extends HttpServlet {
         carrito.setSesion(request.getSession());
         List<Integer> items = carrito.getItems();
         int iid = new Integer(id);
-        if (items.contains(iid)) {
-            response.sendRedirect(REDIRECCION
-                    + "?mensaje=No se pudo agregar al carrito&error=Articulo ya existe en el carrito");
-        } else {
+        if (!items.contains(iid)) {
             items.add(iid);
             carrito.setItems(items);
-            response.sendRedirect(REDIRECCION
-                    + "?mensaje=Articulo agregado al carrito");
         }
+        response.sendRedirect(REDIRECCION                    + "?mensaje=Articulo agregado al carrito");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

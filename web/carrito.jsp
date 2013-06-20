@@ -18,10 +18,10 @@
             </div>
             <div class="row">
                 <jsp:useBean id="carrito" scope="page" class="upao.paw.compumundo.Carrito"/>
-                <%
-                    carrito.setSesion(session);
-                %>
-                items: ${carrito.items}
+                <jsp:setProperty name="carrito" property="sesion" value="<%=session%>"/>
+                <c:forEach var="item" items="${carrito.items}">
+                    <a href="/cm/pantPersonalizar.jsp?id=${item}">${item}</a> |
+                </c:forEach>
             </div>
         </div>
         <%@include file="/WEB-INF/jspf/plantillaFooter.jspf" %>
