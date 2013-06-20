@@ -15,8 +15,8 @@ import upao.paw.compumundo.modelo.Pedido;
  *
  * @author jahd
  */
-@WebServlet(name = "ArchivarPedido", urlPatterns = {"/servlet/ArchivarPedido"})
-public class ArchivarPedido extends HttpServlet {
+@WebServlet(name = "ActivarPedido", urlPatterns = {"/servlet/ActivarPedido"})
+public class ActivarPedido extends HttpServlet {
 
     private static final String REDIRECCION = "/cm/admin/pedidos.jsp";
 
@@ -59,7 +59,7 @@ public class ArchivarPedido extends HttpServlet {
                     + "&mensaje=No se pudo consultar pedido&error=" + ex.getMessage());
             return;
         }
-        pedido.setEstado(Pedido.ESTADO_ARCHIVADO);
+        pedido.setEstado(Pedido.ESTADO_ACTIVO);
         try {
             pedidoDao.update(pedido);
         } catch (SQLException ex) {
@@ -69,7 +69,7 @@ public class ArchivarPedido extends HttpServlet {
         }
 
         response.sendRedirect(redireccion
-                + "&mensaje=Pedido archivado");
+                + "&mensaje=Pedido re-activado");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

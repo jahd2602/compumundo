@@ -43,6 +43,9 @@ public class AccionesPedido extends HttpServlet {
         } else if (accion.equals("Archivar")) {
             response.sendRedirect("/cm/servlet/ArchivarPedido?id=" + id);
             return;
+        } else if (accion.equals("Activar")) {
+            response.sendRedirect("/cm/servlet/ActivarPedido?id=" + id);
+            return;
         } else {
             response.sendRedirect(REDIRECCION + "?mensaje=Ocurrio un error&error=No existe la acccion " + accion);
             return;

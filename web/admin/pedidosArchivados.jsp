@@ -80,7 +80,7 @@
                                 <div class="row offset1">
                                     <div class="span2 btn-group btn-group-vertical">
                                         <input class="btn btn-block" type="submit" name="accion" value="Detalle"/>
-                                        <input class="btn btn-block" type="submit" name="accion" value="Archivar"/>
+                                        <input class="btn btn-block" type="submit" name="accion" value="Activar"/>
                                     </div>
                                 </div>
                             </form>
