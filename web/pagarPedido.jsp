@@ -7,17 +7,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Compu Mundo</title>
-        <link rel="stylesheet" href="/cm/css/bootstrap.css">
-    </head>
+    <%@include file="/WEB-INF/jspf/plantillaHead.jspf" %>
     <body>
-
         <div class="container">
-
-            <% %>
-
+            <%@include file="/WEB-INF/jspf/plantillaMenuCliente.jspf"%>
+            <div class="row">
+                <div class="span11 offset1">
+                    <h3>Pagar Pedido</h3>
+                </div>
+            </div>
             <div class="row">
                 <div class="span3 offset1">Total:</div>
                 <div class="span5 offset1"> S/ 1655.00</div>
