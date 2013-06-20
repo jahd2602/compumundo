@@ -41,6 +41,25 @@ public class BeanPedidos {
         return ret;
     }
 
+    public List<Pedido> getPedidosArchivados() throws SQLException {
+        List<Pedido> lista = getPedidos();
+        List<Pedido> ret = new ArrayList<Pedido>();
+        for (Pedido pedido : lista) {
+            if (pedido.getEstado().equals(Pedido.ESTADO_ARCHIVADO)) {
+                ret.add(pedido);
+            }
+        }
+        return ret;
+    }
+
+    public List<Pedido> getPedidosArchivadosRefreshComprador() throws SQLException {
+        List<Pedido> lista = getPedidosArchivados();
+        for (Pedido pedido : lista) {
+            BD.getInstance().getCompradorDao().refresh(pedido.getComprador());
+        }
+        return lista;
+    }
+
     public List<Pedido> getPedidosRefreshComprador() throws SQLException {
         List<Pedido> lista = getPedidosActivos();
         for (Pedido pedido : lista) {
