@@ -20,7 +20,6 @@
                     <a href="/cm/admin/pedidosArchivados.jsp">Ver Pedidos Archivados</a>
                 </div>
             </div>
-            <%--Una Vez Creada la DB Recibir datos y ponerlos en las sgts. Variables--%>
 
             <jsp:useBean id="listaPedidos" scope="application" class="upao.paw.compumundo.control.bean.BeanPedidos"/>
             <c:catch var="ex">
