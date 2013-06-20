@@ -37,13 +37,13 @@
                             <strong>Estado:</strong>
                             <c:choose>
                                 <c:when test="${pedido.estado eq 0}">
-                                    Activo <a href="/cm/AccionesPedido?accion=Archivar&id=${pedido.id}" class="btn btn-mini">Archivar</a>
+                                    Activo <a href="/cm/servlet/AccionesPedido?accion=Archivar&id=${pedido.id}" class="btn btn-mini">Archivar</a>
                                 </c:when>
                                 <c:when test="${pedido.estado eq 1}">
                                     Cancelado
                                 </c:when>
                                 <c:when test="${pedido.estado eq 2}">
-                                    Archivado <a href="/cm/AccionesPedido?accion=Activar&id=${pedido.id}" class="btn btn-mini">Activar</a>
+                                    Archivado <a href="/cm/servlet/AccionesPedido?accion=Activar&id=${pedido.id}" class="btn btn-mini">Activar</a>
                                 </c:when>
                                 <c:otherwise>
                                     Desconocido

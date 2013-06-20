@@ -1,4 +1,4 @@
-package upao.paw.compumundo.control.redirecccion;
+package upao.paw.compumundo.control.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jahd
  */
-@WebServlet(name = "AccionesPedido", urlPatterns = {"/AccionesPedido"})
+@WebServlet(name = "AccionesPedido", urlPatterns = {"/servlet/AccionesPedido"})
 public class AccionesPedido extends HttpServlet {
 
     private static final String REDIRECCION = "/cm/admin/pedidos.jsp";

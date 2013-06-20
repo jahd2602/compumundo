@@ -12,7 +12,7 @@
             <%@include file="/WEB-INF/jspf/plantillaMenuAdmin.jspf"%>
             <div class="row">
                 <div class="span11 offset1">
-                    <h3>Administrar Pedidos Archivados</h3> 
+                    <h3>Administrar Pedidos Archivados</h3>
                 </div>
             </div>
             <div class="row">
@@ -42,7 +42,7 @@
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <form action="/cm/AccionesPedido" method="get">
+                            <form action="/cm/servlet/AccionesPedido" method="get">
                                 <div class="row">
                                     <div class="span10 offset1">
 

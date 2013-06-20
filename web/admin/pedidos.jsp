@@ -42,7 +42,7 @@
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <form action="/cm/AccionesPedido" method="get">
+                            <form action="/cm/servlet/AccionesPedido" method="get">
                                 <div class="row">
                                     <div class="span10 offset1">
 
