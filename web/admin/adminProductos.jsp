@@ -12,37 +12,38 @@
             </div>
 
             <div class="row">
-                <div class="span5 offset2" ><input type="radio" name="Productos" value="pc_software_libre"/> Pc Con Software Libre</div>
-            </div>
+                <div class="span8 offset2" >
+                    <table  class="table" align="center" cellspacing="5" cellpadding="5">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Producto</th>
+                                <th>Categoria</th>
+                                <th>Precio Base</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <td><input type="radio" name="Productos" value="pc_software_libre"/></td>
+                        <td>Pc Con Software Libre</td>
+                        <td>Desktop</td>
+                        <td>S/. 900</td>
+                        </tbody>
+                    </table>
 
-            <div class="row">
-                <div class="span5 offset2" ><input type="radio" name="Productos" value="pc_software_privativo" /> Pc Con Software Privativo</div>
-            </div>
-
-            <div class="row">
-                <div class="span5 offset2" ><input type="radio" name="Productos" value="memoria_usb" />  Memoria Usb</div>
-            </div>
-
-            <br>
-            <div class="row">
-
-
-                <div class="span2 offset3">
-                    <a class="btn">Modificar</a>
-                </div>
-
-                <!se parteee>
-                <div class="span2">
-                    <a class="btn">Eliminar</a>
-                </div>
-
-                <div class="span2">
-                    <a class="btn">Comprar</a>
                 </div>
             </div>
 
-            <div class="span4"></div>
 
+            <div class="row" style="margin-top: 10px">
+                <div class="span1 offset2"> Acciones: </div>
+            </div>
+
+            <div class="row offset2">
+                <div class="span2 btn-group btn-group-vertical">
+                    <input class="btn btn-block" type="submit" name="accion" value="Detalle"/>
+                    <input class="btn btn-block" type="submit" name="accion" value="Eliminar"/>
+                </div>
+            </div>
         </div>
         <%@include file="/WEB-INF/jspf/plantillaFooter.jspf" %>
     </body>
