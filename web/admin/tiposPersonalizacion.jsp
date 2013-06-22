@@ -44,54 +44,53 @@
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <div class="row">
-                                <div class="span6 offset2" >
-                                    <table class="table" align="center" cellspacing="5" cellpadding="5">
-                                        <thead>
-                                            <tr>
-                                                <th></th>
-                                                <th>Tipo Personalizaci&oacute;n</th>
-                                                <th>Variantes</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <jsp:useBean id="listaPersonalizacion" scope="application" class="upao.paw.compumundo.control.bean.BeanPersonalizacion"/>
-                                            <c:forEach var="tp" items="${tiposPersonalizacion}">
-                                                <jsp:setProperty name="listaPersonalizacion" property="idTipoPersonalizacion" value="${tp.id}"/>
+                            <form action="/cm/admin/verTipoPersonalizacion.jsp" method="get">
+                                <div class="row">
+                                    <div class="span6 offset2" >
+                                        <table class="table" align="center" cellspacing="5" cellpadding="5">
+                                            <thead>
                                                 <tr>
-                                                    <td>
-                                                        <input type="radio" name="id" value="${tp.id}" />
-                                                    </td>
-                                                    <td>
-                                                        ${tp.nombre}
-                                                    </td>
-                                                    <td>
-                                                        ${listaPersonalizacion.cantidadPorTipo}
-                                                    </td>
+                                                    <th></th>
+                                                    <th>Tipo Personalizaci&oacute;n</th>
+                                                    <th>Variantes</th>
                                                 </tr>
-                                            </c:forEach>
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                                <jsp:useBean id="listaPersonalizacion" scope="application" class="upao.paw.compumundo.control.bean.BeanPersonalizacion"/>
+                                                <c:forEach var="tp" items="${tiposPersonalizacion}">
+                                                    <jsp:setProperty name="listaPersonalizacion" property="idTipoPersonalizacion" value="${tp.id}"/>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="radio" name="id" value="${tp.id}" />
+                                                        </td>
+                                                        <td>
+                                                            ${tp.nombre}
+                                                        </td>
+                                                        <td>
+                                                            ${listaPersonalizacion.cantidadPorTipo}
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
-                            </div>
+
+                                <div class="row" style="margin-top: 10px">
+                                    <div class="span1 offset2"> Acciones: </div>
+                                </div>
+
+                                <div class="row offset2">
+                                    <div class="span2 btn-group btn-group-vertical">
+                                        <button type="submit" class="btn btn-block">Detalle</button>
+                                        <a class="btn">Eliminar</a>
+                                    </div>
+                                </div>
+                            </form>
                         </c:otherwise>
                     </c:choose>
                 </c:otherwise>
             </c:choose>
-
-            <div class="row" style="margin-top: 20px">
-                <div class="span1 offset2"> Acciones: </div>
-            </div>
-
-            <div class="row offset2">
-                <div class="span2 btn-group btn-group-vertical">
-                    <a class="btn">Detalle</a>
-                    <a class="btn">Eliminar</a>
-                </div>
-
-                <div class="span4"></div>
-            </div>
-
         </div>
         <%@include file="/WEB-INF/jspf/plantillaFooter.jspf" %>
     </body>
