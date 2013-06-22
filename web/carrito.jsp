@@ -16,7 +16,7 @@
                     <h3>Carrito</h3>
                 </div>
             </div>
-            <form action="/cm/servlet/AccionesPedido" method="get">
+            <form action="/cm/servlet/AccionesCarrito" method="get">
                 <div class="row">
                     <div class="span9 offset1">
                         <table  class="table" align="center" cellspacing="5" cellpadding="5">
