@@ -1,13 +1,21 @@
 package upao.paw.compumundo.control.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import upao.paw.compumundo.BD;
 import upao.paw.compumundo.Carrito;
+import upao.paw.compumundo.modelo.Comprador;
+import upao.paw.compumundo.modelo.LineaPedido;
+import upao.paw.compumundo.modelo.Pedido;
 
 /**
  *
@@ -30,24 +38,79 @@ public class RealizarPedido extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("id");
-        if (id == null || id.isEmpty()) {
+        BD bd;
+        try {
+            bd = BD.getInstance();
+        } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
-                    + "?mensaje=No se pudo agregar al carrito&error=Falta el parametro id");
+                    + "?mensaje=No se pudo conectar a la base de datos&error=" + ex.getMessage());
             return;
         }
 
+        Pedido pedido = new Pedido();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+        pedido.setFecha(sdf.format(new Date()));
+        try {
+            bd.getPedidoDao().create(pedido);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Pedido&error=" + ex.getMessage());
+            return;
+        }
         Carrito carrito = new Carrito();
         carrito.setSesion(request.getSession());
         List<Integer> items = carrito.getItems();
-        int iid = new Integer(id);
-        if (!items.contains(iid)) {
-            items.add(iid);
-            carrito.setItems(items);
-            response.sendRedirect(REDIRECCION + "?mensaje=Articulo agregado al carrito");
-        } else {
-            response.sendRedirect(REDIRECCION + "?mensaje=Articulo modificado");
+        LineaPedido lpTemp;
+        for (Integer item : items) {
+            lpTemp = new LineaPedido();
+            lpTemp.setId(item);
+            try {
+                bd.getLineaPedidoDao().refresh(lpTemp);
+            } catch (SQLException ex) {
+                response.sendRedirect(REDIRECCION
+                        + "?mensaje=No se pudo refrescar LineaPedido&error=" + ex.getMessage());
+                return;
+            }
+            lpTemp.setPedido(pedido);
+            try {
+                bd.getLineaPedidoDao().update(lpTemp);
+            } catch (SQLException ex) {
+                response.sendRedirect(REDIRECCION
+                        + "?mensaje=No se pudo guardar LineaPedido&error=" + ex.getMessage());
+                return;
+            }
         }
+
+        Comprador comprador = new Comprador();
+        comprador.setNombre(request.getParameter("nombre"));
+        comprador.setApellido(request.getParameter("apellido"));
+        comprador.setDireccion(request.getParameter("direccion"));
+        comprador.setCiudad(request.getParameter("ciudad"));
+        comprador.setRegion(request.getParameter("region"));
+        comprador.setTipoTarjeta(request.getParameter("tipoTarjeta"));
+        comprador.setNumeroTarjeta(request.getParameter("numeroTarjeta"));
+        try {
+            bd.getCompradorDao().create(comprador);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear Comprador&error=" + ex.getMessage());
+            return;
+        }
+
+        pedido.setComprador(comprador);
+        pedido.setEstado(Pedido.ESTADO_ACTIVO);
+        try {
+            bd.getPedidoDao().update(pedido);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Pedido&error=" + ex.getMessage());
+            return;
+        }
+
+        carrito.setItems(new ArrayList<Integer>());
+
+        response.sendRedirect(REDIRECCION
+                + "?mensaje=Pedido realizado con exito");
 
     }
 
