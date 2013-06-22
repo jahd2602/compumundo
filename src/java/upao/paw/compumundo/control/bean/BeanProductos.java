@@ -28,6 +28,14 @@ public class BeanProductos {
         return productoDao.queryForAll();
     }
 
+    public List<Producto> getProductosRefreshCategoria() throws SQLException {
+        List<Producto> ret = getProductos();
+        for (Producto producto : ret) {
+            BD.getInstance().getCategoriaDao().refresh(producto.getCategoria());
+        }
+        return ret;
+    }
+
     public List<Producto> getProductosPorIdCategoria() throws SQLException {
         return productoDao.queryForEq("categoria_id", idCategoria);
     }
