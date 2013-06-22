@@ -12,11 +12,11 @@ public class Producto {
 
     @DatabaseField(generatedId = true)
     private int id;
-    @DatabaseField(canBeNull = false)
+    @DatabaseField
     private String descripcion;
-    @DatabaseField(canBeNull = false)
+    @DatabaseField
     private double precio_base;
-    @DatabaseField(canBeNull = false, foreign = true)
+    @DatabaseField(foreign = true)
     private Categoria categoria;
 
     public int getId() {
