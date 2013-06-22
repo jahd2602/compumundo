@@ -39,7 +39,7 @@
                                     <c:set var="monto" value="${listaLineaPedidos.montoPorIdLineaPedido}"/>
                                     <c:set var="total" value="${total + monto}" />
                                     <tr>
-                                        <td><input type="radio" name="id" value="${item}" /> </td>
+                                        <td><input type="radio" name="id" value="${item}" /></td>
                                         <td>${producto.descripcion}</td>
                                         <td>S/. ${producto.precio_base}</td>
                                         <td>S/. ${monto}</td>
@@ -66,7 +66,9 @@
                         <input class="btn btn-block" type="submit" name="accion" value="Eliminar"/>
                     </div>
                     <div class="span3 offset2">
-                        <a class="btn btn-block btn-primary">Comprar</a>
+                        <button href="/cm/pagarPedido.jsp" class="btn btn-block btn-primary" ${total==0?'disabled':''}>
+                            Comprar
+                        </button>
                     </div>
                 </div>
             </form>
