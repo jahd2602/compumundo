@@ -43,11 +43,15 @@
                             <c:forEach var="tp" items="${tiposPersonalizacion}">
                                 <jsp:setProperty name="listaPersonalizacion" property="idTipoPersonalizacion" value="${tp.id}"/>
                                 <div class="row">
-                                    <div class="span4 offset1">
+                                    <div class="span1 offset2">
                                         <input type="radio" name="id" value="${tp.id}" />
+                                    </div>
+                                    <div class="span2">
                                         ${tp.nombre}
                                     </div>
-                                    <div class="span4">${listaPersonalizacion.cantidadPorTipo} Variantes</div>
+                                    <div class="span4">
+                                        ${listaPersonalizacion.cantidadPorTipo} Variantes
+                                    </div>
                                 </div>
                             </c:forEach>
                         </c:otherwise>
