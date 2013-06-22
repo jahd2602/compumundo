@@ -16,6 +16,11 @@
                 <div class="span11 offset1">
                     <h3>Administrar Tipos de Personalizaciones</h3>
                 </div>
+                <div class="span2 offset9">
+                    <a href="" class="btn btn-block">
+                        Agregar Nuevo
+                    </a>
+                </div>
             </div>
             <jsp:useBean id="listaTP" scope="application" class="upao.paw.compumundo.control.bean.BeanTiposPersonalizacion"/>
             <c:catch var="ex">
@@ -75,12 +80,12 @@
             </c:choose>
 
             <div class="row" style="margin-top: 20px">
-                <div class="span1 offset1"> Acciones: </div>
+                <div class="span1 offset2"> Acciones: </div>
             </div>
 
-            <div class="row offset1">
+            <div class="row offset2">
                 <div class="span2 btn-group btn-group-vertical">
-                    <a class="btn">Modificar</a>
+                    <a class="btn">Detalle</a>
                     <a class="btn">Eliminar</a>
                 </div>
 
