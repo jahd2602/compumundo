@@ -48,7 +48,7 @@ public class RealizarPedido extends HttpServlet {
         }
 
         Pedido pedido = new Pedido();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         pedido.setFecha(sdf.format(new Date()));
         try {
             bd.getPedidoDao().create(pedido);
