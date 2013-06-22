@@ -44,8 +44,11 @@ public class AgregarAlCarrito extends HttpServlet {
         if (!items.contains(iid)) {
             items.add(iid);
             carrito.setItems(items);
+            response.sendRedirect(REDIRECCION + "?mensaje=Articulo agregado al carrito");
+        } else {
+            response.sendRedirect(REDIRECCION + "?mensaje=Articulo modificado");
         }
-        response.sendRedirect(REDIRECCION                    + "?mensaje=Articulo agregado al carrito");
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
