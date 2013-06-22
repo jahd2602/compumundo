@@ -39,21 +39,36 @@
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <jsp:useBean id="listaPersonalizacion" scope="application" class="upao.paw.compumundo.control.bean.BeanPersonalizacion"/>
-                            <c:forEach var="tp" items="${tiposPersonalizacion}">
-                                <jsp:setProperty name="listaPersonalizacion" property="idTipoPersonalizacion" value="${tp.id}"/>
-                                <div class="row">
-                                    <div class="span1 offset2">
-                                        <input type="radio" name="id" value="${tp.id}" />
-                                    </div>
-                                    <div class="span2">
-                                        ${tp.nombre}
-                                    </div>
-                                    <div class="span4">
-                                        ${listaPersonalizacion.cantidadPorTipo} Variantes
-                                    </div>
+                            <div class="row">
+                                <div class="span6 offset2" >
+                                    <table class="table" align="center" cellspacing="5" cellpadding="5">
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Tipo Personalizaci&oacute;n</th>
+                                                <th>Variantes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <jsp:useBean id="listaPersonalizacion" scope="application" class="upao.paw.compumundo.control.bean.BeanPersonalizacion"/>
+                                            <c:forEach var="tp" items="${tiposPersonalizacion}">
+                                                <jsp:setProperty name="listaPersonalizacion" property="idTipoPersonalizacion" value="${tp.id}"/>
+                                                <tr>
+                                                    <td>
+                                                        <input type="radio" name="id" value="${tp.id}" />
+                                                    </td>
+                                                    <td>
+                                                        ${tp.nombre}
+                                                    </td>
+                                                    <td>
+                                                        ${listaPersonalizacion.cantidadPorTipo}
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+                                        </tbody>
+                                    </table>
                                 </div>
-                            </c:forEach>
+                            </div>
                         </c:otherwise>
                     </c:choose>
                 </c:otherwise>
