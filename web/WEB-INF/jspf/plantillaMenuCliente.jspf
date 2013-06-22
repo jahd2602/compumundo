@@ -3,7 +3,7 @@
 <div class = "navbar">
     <div class = "navbar-inner">
         <ul class = "nav">
-            <li> <a href = "/cm/index.jsp"> <i class="icon-home"></i> Inicio </a></li>
+            <li> <a href = "/cm/index.jsp"> <i class="icon-home"></i> Categor&iacute;as </a></li>
         </ul>
         <ul class = "nav pull-right">
             <li><a href = "/cm/carrito.jsp"> <i class="icon-shopping-cart"></i> Ver Carrito </a></li>
