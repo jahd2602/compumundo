@@ -66,7 +66,7 @@
                                                 <c:otherwise>
                                                     <select name="categoria">
                                                         <c:forEach var="categoria" items="${categorias}">
-                                                            <option value="${categoria.id}">${categoria.nombre}</option>
+                                                            <option ${categoria.id==producto.categoria.id?'selected':''} value="${categoria.id}">${categoria.nombre}</option>
                                                         </c:forEach>
                                                     </c:otherwise>
                                                 </c:choose>
@@ -80,8 +80,11 @@
                                         </div>
                                         <div class="span2">
                                             <jsp:useBean id="listaTP" scope="application" class="upao.paw.compumundo.control.bean.BeanTiposPersonalizacion"/>
+                                            <jsp:useBean id="listaCI" scope="application" class="upao.paw.compumundo.control.bean.BeanConfiguracionInicial"/>
+                                            <jsp:setProperty name="listaCI" property="productoId" param="id"/>
                                             <c:catch var="ex">
                                                 <c:set var="tiposPersonalizacion" value="${listaTP.tiposPersonalizacion}"/>
+                                                <c:set var="personalizacion" value="${listaCI.personalizacionPorProductoId}"/>
                                             </c:catch>
                                             <c:choose>
                                                 <c:when test="${ex != null}">
@@ -95,7 +98,7 @@
                                                     <select name="tipoPersonalizacion">
                                                         <jsp:useBean id="listaPersonalizacion" scope="application" class="upao.paw.compumundo.control.bean.BeanPersonalizacion"/>
                                                         <c:forEach var="tp" items="${tiposPersonalizacion}">
-                                                            <option value="${tp.id}">${tp.nombre}</option>
+                                                            <option ${personalizacion.tipoPersonalizacion.id==tp.id?'selected':''} value="${tp.id}">${tp.nombre}</option>
                                                         </c:forEach>
                                                     </c:otherwise>
                                                 </c:choose>
