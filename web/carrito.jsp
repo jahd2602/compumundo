@@ -66,9 +66,11 @@
                         <input class="btn btn-block" type="submit" name="accion" value="Eliminar"/>
                     </div>
                     <div class="span3 offset2">
-                        <button href="/cm/pagarPedido.jsp" class="btn btn-block btn-primary" ${total==0?'disabled':''}>
-                            Comprar
-                        </button>
+                        <c:if test="${total!=0}">
+                            <a href="/cm/pagarPedido.jsp" class="btn btn-block btn-primary" >
+                                Comprar
+                            </a>
+                        </c:if>
                     </div>
                 </div>
             </form>
