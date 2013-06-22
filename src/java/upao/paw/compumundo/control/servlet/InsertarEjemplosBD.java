@@ -56,13 +56,15 @@ public class InsertarEjemplosBD extends HttpServlet {
         }
         //</editor-fold>
 
+        Personalizacion perTemp;
+
         //<editor-fold defaultstate="collapsed" desc="Agregar Personalizacion Disco Duro de 1tb">
-        Personalizacion per1tb = new Personalizacion();
-        per1tb.setTipoPersonalizacion(tpDiscoDuro);
-        per1tb.setNombre("1tb");
-        per1tb.setPrecio(0);
+        perTemp = new Personalizacion();
+        perTemp.setTipoPersonalizacion(tpDiscoDuro);
+        perTemp.setNombre("1tb");
+        perTemp.setPrecio(80);
         try {
-            bd.getPersonalizacionDao().create(per1tb);
+            bd.getPersonalizacionDao().create(perTemp);
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudo crear ejemplo en tabla Personalizacion&error=" + ex.getMessage());
@@ -71,12 +73,12 @@ public class InsertarEjemplosBD extends HttpServlet {
         //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc="Agregar Personalizacion Disco Duro de 2tb">
-        Personalizacion per2tb = new Personalizacion();
-        per2tb.setTipoPersonalizacion(tpDiscoDuro);
-        per2tb.setNombre("2tb");
-        per2tb.setPrecio(0);
+        perTemp = new Personalizacion();
+        perTemp.setTipoPersonalizacion(tpDiscoDuro);
+        perTemp.setNombre("2tb");
+        perTemp.setPrecio(150);
         try {
-            bd.getPersonalizacionDao().create(per2tb);
+            bd.getPersonalizacionDao().create(perTemp);
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudo crear ejemplo en tabla Personalizacion&error=" + ex.getMessage());
@@ -85,12 +87,94 @@ public class InsertarEjemplosBD extends HttpServlet {
         //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc="Agregar Personalizacion Disco Duro de 500mb">
-        Personalizacion per500mb = new Personalizacion();
-        per500mb.setTipoPersonalizacion(tpDiscoDuro);
-        per500mb.setNombre("500mb");
-        per500mb.setPrecio(0);
+        perTemp = new Personalizacion();
+        perTemp.setTipoPersonalizacion(tpDiscoDuro);
+        perTemp.setNombre("500mb");
+        perTemp.setPrecio(0);
         try {
-            bd.getPersonalizacionDao().create(per500mb);
+            bd.getPersonalizacionDao().create(perTemp);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Personalizacion&error=" + ex.getMessage());
+            return;
+        }
+        //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Agregar TipoPersonalizacion Capacidad USB">
+        TipoPersonalizacion tpCapacidadUSB = new TipoPersonalizacion();
+        tpCapacidadUSB.setNombre("Capacidad USB");
+        try {
+            bd.getTipoPersonalizacionDao().create(tpCapacidadUSB);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Tipo Personalizacion&error=" + ex.getMessage());
+            return;
+        }
+        //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Agregar Personalizacion Capacidad USB de 2gb">
+        perTemp = new Personalizacion();
+        perTemp.setTipoPersonalizacion(tpCapacidadUSB);
+        perTemp.setNombre("2gb");
+        perTemp.setPrecio(0);
+        try {
+            bd.getPersonalizacionDao().create(perTemp);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Personalizacion&error=" + ex.getMessage());
+            return;
+        }
+        //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Agregar Personalizacion Capacidad USB de 4gb">
+        perTemp = new Personalizacion();
+        perTemp.setTipoPersonalizacion(tpCapacidadUSB);
+        perTemp.setNombre("4gb");
+        perTemp.setPrecio(10);
+        try {
+            bd.getPersonalizacionDao().create(perTemp);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Personalizacion&error=" + ex.getMessage());
+            return;
+        }
+        //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Agregar Personalizacion Capacidad USB de 8gb">
+        perTemp = new Personalizacion();
+        perTemp.setTipoPersonalizacion(tpCapacidadUSB);
+        perTemp.setNombre("8gb");
+        perTemp.setPrecio(30);
+        try {
+            bd.getPersonalizacionDao().create(perTemp);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Personalizacion&error=" + ex.getMessage());
+            return;
+        }
+        //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Agregar Personalizacion Capacidad USB de 16gb">
+        perTemp = new Personalizacion();
+        perTemp.setTipoPersonalizacion(tpCapacidadUSB);
+        perTemp.setNombre("16gb");
+        perTemp.setPrecio(50);
+        try {
+            bd.getPersonalizacionDao().create(perTemp);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Personalizacion&error=" + ex.getMessage());
+            return;
+        }
+        //</editor-fold>
+
+        //<editor-fold defaultstate="collapsed" desc="Agregar Personalizacion Capacidad USB de 32gb">
+        perTemp = new Personalizacion();
+        perTemp.setTipoPersonalizacion(tpCapacidadUSB);
+        perTemp.setNombre("32gb");
+        perTemp.setPrecio(90);
+        try {
+            bd.getPersonalizacionDao().create(perTemp);
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudo crear ejemplo en tabla Personalizacion&error=" + ex.getMessage());

@@ -2,6 +2,7 @@ package upao.paw.compumundo.control.servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -64,14 +65,32 @@ public class GuardarProducto extends HttpServlet {
             return;
         }
 
-        Personalizacion pers;
-        pers = new Personalizacion();
-        pers.setId(new Integer(request.getParameter("tipoPersonalizacion")));
+        List<Personalizacion> listaPer;
+        try {
+            listaPer = BD.getInstance().getPersonalizacionDao().queryForEq("tipoPersonalizacion_id", request.getParameter("tipoPersonalizacion"));
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo consultar tipoPersonalizacion&error=" + ex.getMessage());
+            return;
+        }
+        Personalizacion pers = listaPer.get(0);
+        for (Personalizacion personalizacion : listaPer) {
+            if (pers.getPrecio() > personalizacion.getPrecio()) {
+                pers = personalizacion;
+            }
+        }
 
         ConfiguracionInicial conf = new ConfiguracionInicial();
         conf.setPersonalizacion(pers);
         conf.setProducto(prod);
 
+        try {
+            List<ConfiguracionInicial> listaABorrar = bd.getConfiguracionInicialDao().queryForEq("producto_id", prod.getId());
+            for (ConfiguracionInicial configuracionInicial : listaABorrar) {
+                bd.getConfiguracionInicialDao().delete(configuracionInicial);
+            }
+        } catch (SQLException ex) {
+        }
         try {
             bd.getConfiguracionInicialDao().create(conf);
         } catch (SQLException ex) {

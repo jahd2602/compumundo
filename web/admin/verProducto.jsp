@@ -82,26 +82,16 @@
                                             <jsp:useBean id="listaTP" scope="application" class="upao.paw.compumundo.control.bean.BeanTiposPersonalizacion"/>
                                             <jsp:useBean id="listaCI" scope="application" class="upao.paw.compumundo.control.bean.BeanConfiguracionInicial"/>
                                             <jsp:setProperty name="listaCI" property="productoId" param="id"/>
-                                            <c:catch var="ex">
-                                                <c:set var="tiposPersonalizacion" value="${listaTP.tiposPersonalizacion}"/>
-                                                <c:set var="personalizacion" value="${listaCI.personalizacionPorProductoId}"/>
+                                            <c:set var="tiposPersonalizacion" value="${listaTP.tiposPersonalizacion}"/>
+                                            <c:set var="tipoPerId" value="${0}"/>
+                                            <c:catch>
+                                                <c:set var="tipoPerId" value="${listaCI.personalizacionPorProductoId.tipoPersonalizacion.id}"/>
                                             </c:catch>
-                                            <c:choose>
-                                                <c:when test="${ex != null}">
-                                                    <div class="span10">
-                                                        <div class="alert alert-danger">
-                                                            No se pudo conectar a la base de datos
-                                                        </div>
-                                                    </div>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <select name="tipoPersonalizacion">
-                                                        <jsp:useBean id="listaPersonalizacion" scope="application" class="upao.paw.compumundo.control.bean.BeanPersonalizacion"/>
-                                                        <c:forEach var="tp" items="${tiposPersonalizacion}">
-                                                            <option ${personalizacion.tipoPersonalizacion.id==tp.id?'selected':''} value="${tp.id}">${tp.nombre}</option>
-                                                        </c:forEach>
-                                                    </c:otherwise>
-                                                </c:choose>
+
+                                            <select name="tipoPersonalizacion">
+                                                <c:forEach var="tp" items="${tiposPersonalizacion}">
+                                                    <option ${tipoPerId!=tp.id?'':'selected'} value="${tp.id}">${tp.nombre}</option>
+                                                </c:forEach>
                                             </select>
                                         </div>
                                     </div>
