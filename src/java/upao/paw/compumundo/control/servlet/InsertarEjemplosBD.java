@@ -44,9 +44,11 @@ public class InsertarEjemplosBD extends HttpServlet {
         }
         //</editor-fold>
 
+        //<editor-fold defaultstate="collapsed" desc="Agregar usuarios por defecto">
         Usuario usrAdmin = new Usuario();
         usrAdmin.setNombre("admin");
         usrAdmin.setPass("admin");
+        usrAdmin.setEsAdmin(true);
         try {
             bd.getUsuarioDao().create(usrAdmin);
         } catch (SQLException ex) {
@@ -54,6 +56,18 @@ public class InsertarEjemplosBD extends HttpServlet {
                     + "?mensaje=No se pudo crear ejemplo en tabla Usuario&error=" + ex.getMessage());
             return;
         }
+
+        Usuario usrCesar = new Usuario();
+        usrCesar.setNombre("cesar");
+        usrCesar.setPass("cesar");
+        try {
+            bd.getUsuarioDao().create(usrCesar);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Usuario&error=" + ex.getMessage());
+            return;
+        }
+        //</editor-fold>
 
         //<editor-fold defaultstate="collapsed" desc="Agregar TipoPersonalizacion Disco Duro">
         TipoPersonalizacion tpDiscoDuro = new TipoPersonalizacion();
