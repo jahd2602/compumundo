@@ -1,0 +1,3 @@
+<c:if test="${not autorizado}">
+    <c:redirect url="?mensaje=No se cuentan con los privilegios suficientes&error=El usuario no esta autenticado"/>
+</c:if>

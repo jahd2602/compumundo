@@ -7,6 +7,7 @@
 
         <div class="container">
             <%@include file="/WEB-INF/jspf/plantillaMenuCliente.jspf"%>
+            <%@include file="/WEB-INF/jspf/plantillaRequiereAutenticacion.jspf"%>
             <div class="row">
                 <div class="span11 offset1">
                     <h3>Personalizar Producto</h3>
