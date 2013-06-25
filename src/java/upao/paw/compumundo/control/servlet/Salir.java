@@ -34,6 +34,7 @@ public class Salir extends HttpServlet {
 
         request.getSession().removeAttribute(Login.LOGIN_USUARIO);
         request.getSession().removeAttribute(Login.LOGIN_ESADMIN);
+        request.getSession().removeAttribute(Login.LOGIN_ID);
         
         Carrito carrito = new Carrito();
         carrito.setSesion(request.getSession());
