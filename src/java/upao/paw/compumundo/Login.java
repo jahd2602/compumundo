@@ -15,6 +15,7 @@ public class Login {
     public static final String LOGIN_USUARIO = "user";
     public static final String LOGIN_PASS = "pass";
     public static final String LOGIN_ESADMIN = "esadmin";
+    public static final String LOGIN_ID = "idUsuario";
     private HttpSession sesion;
     private boolean requiereAdmin;
     private String nombre;

@@ -71,6 +71,7 @@ public class Entrar extends HttpServlet {
 
         String redireccion = usuario.isEsAdmin() ? "/cm/admin/" : REDIRECCION;
         request.getSession().setAttribute(Login.LOGIN_ESADMIN, usuario.isEsAdmin());
+        request.getSession().setAttribute(Login.LOGIN_ID,usuario.getId());
 
         response.sendRedirect(redireccion);
     }
