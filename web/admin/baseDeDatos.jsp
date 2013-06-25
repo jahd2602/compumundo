@@ -11,7 +11,7 @@
     <%@include file="/WEB-INF/jspf/plantillaHead.jspf" %>
     <body>
         <div class="container">
-            <%@include file="/WEB-INF/jspf/plantillaMenuAdmin.jspf"%>
+            <%@include file="/WEB-INF/jspf/plantillaCabecera.jspf"%>
             <div class="row">
                 <div class="span11 offset1">
                     <h3>Administrar Base de Datos</h3>
