@@ -4,11 +4,26 @@
     <div class = "navbar-inner">
         <ul class = "nav">
             <li> <a href = "/cm/index.jsp"> <i class="icon-home"></i> Categor&iacute;as </a></li>
-        </ul>
-        <ul class = "nav pull-right">
             <li><a href = "/cm/carrito.jsp"> <i class="icon-shopping-cart"></i> Ver Carrito </a></li>
-            <li> <a href = "/cm/admin/"> <i class="icon-wrench"></i> Administrar </a></li>
         </ul>
+        <jsp:useBean id="login" scope="application" class="upao.paw.compumundo.Login"/>
+        <jsp:setProperty name="login" property="requiereAdmin" value="false"/>
+        <%@include file="plantillaLogin.jspf" %>
+        <c:if test="${not autorizado}">
+            <ul class = "nav pull-right">
+                <li> <a href = "/cm/admin/"> <i class=" icon-user"></i> Registrarse </a></li>
+            </ul>
+            <form class="navbar-form pull-right" action="/cm/servlet/Entrar" method="get">
+                <input type="text" name="user" class="input-small" placeholder="Usuario">
+                <input type="password" name="pass" class="input-small" placeholder="Contraseña">
+                <button type="submit" class="btn">Entrar</button>
+            </form>
+        </c:if>
+        <c:if test="${login.esAdmin}">
+            <ul class = "nav">
+                <li> <a href = "/cm/admin/"> <i class="icon-wrench"></i> Area Administrativa </a></li>
+            </ul>
+        </c:if>
     </div>
 </div>
 <%@include file="plantillaAlerta.jspf" %>

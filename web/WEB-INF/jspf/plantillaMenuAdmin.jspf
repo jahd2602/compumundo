@@ -5,8 +5,14 @@
         <ul class = "nav">
             <li> <a href = "/cm/admin/"><i class="icon-align-justify"></i> Menu Administrativo</a></li>
         </ul>
-        <ul class = "nav pull-right">
-            <li> <a href = "/cm/index.jsp"><i class="icon-share-alt"></i> Salir </a></li>
+        <jsp:useBean id="login" scope="application" class="upao.paw.compumundo.Login"/>
+        <jsp:setProperty name="login" property="requiereAdmin" value="true"/>
+        <%@include file="plantillaLogin.jspf" %>
+        <c:if test="${not autorizado or not login.esAdmin}">
+            <c:redirect url="/index.jsp?mensaje=No se cuentan con los privilegios suficientes&error=El usuario no es administrador"/>
+        </c:if>
+        <ul class = "nav">
+            <li> <a href = "/cm/index.jsp"><i class="icon-wrench"></i> Area Administrativa (Salir) </a></li>
         </ul>
     </div>
 </div>

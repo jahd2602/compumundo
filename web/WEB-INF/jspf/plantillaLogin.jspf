@@ -1,0 +1,10 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<jsp:setProperty name="login" property="sesion" value="<%=session%>"/>
+<c:set var="autorizado" value="${login.autorizado}"/>
+<c:if test="${autorizado}">
+    <ul class = "nav pull-right">
+        <li> <a> <b> Bienvenido ${login.nombre} </b></a></li>
+        <li> <a href = "/cm/servlet/Salir"> <i class="icon-share-alt"></i> Salir </a></li>
+    </ul>
+</c:if>
