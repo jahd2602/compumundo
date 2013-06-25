@@ -13,9 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import upao.paw.compumundo.BD;
 import upao.paw.compumundo.Carrito;
+import upao.paw.compumundo.Login;
 import upao.paw.compumundo.modelo.Comprador;
 import upao.paw.compumundo.modelo.LineaPedido;
 import upao.paw.compumundo.modelo.Pedido;
+import upao.paw.compumundo.modelo.Usuario;
 
 /**
  *
@@ -44,6 +46,13 @@ public class RealizarPedido extends HttpServlet {
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudo conectar a la base de datos&error=" + ex.getMessage());
+            return;
+        }
+
+        Object objUsuarioId = request.getAttribute(Login.LOGIN_ID);
+        if (objUsuarioId == null) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo realizar pedido&error=Al parecer el usuario no esta autenticado");
             return;
         }
 
@@ -80,22 +89,33 @@ public class RealizarPedido extends HttpServlet {
                 return;
             }
         }
+        String strId = request.getParameter("id");
+        Comprador comprador;
+        if (strId == null) {
+            comprador = new Comprador();
+            comprador.setNombre(request.getParameter("nombre"));
+            comprador.setApellido(request.getParameter("apellido"));
+            comprador.setDireccion(request.getParameter("direccion"));
+            comprador.setCiudad(request.getParameter("ciudad"));
+            comprador.setRegion(request.getParameter("region"));
+            comprador.setTipoTarjeta(request.getParameter("tipoTarjeta"));
+            comprador.setNumeroTarjeta(request.getParameter("numeroTarjeta"));
+            Usuario usuario = new Usuario();
+            usuario.setId((Integer) objUsuarioId);
+            comprador.setUsuario(usuario);
 
-        Comprador comprador = new Comprador();
-        comprador.setNombre(request.getParameter("nombre"));
-        comprador.setApellido(request.getParameter("apellido"));
-        comprador.setDireccion(request.getParameter("direccion"));
-        comprador.setCiudad(request.getParameter("ciudad"));
-        comprador.setRegion(request.getParameter("region"));
-        comprador.setTipoTarjeta(request.getParameter("tipoTarjeta"));
-        comprador.setNumeroTarjeta(request.getParameter("numeroTarjeta"));
-        try {
-            bd.getCompradorDao().create(comprador);
-        } catch (SQLException ex) {
-            response.sendRedirect(REDIRECCION
-                    + "?mensaje=No se pudo crear Comprador&error=" + ex.getMessage());
-            return;
+            try {
+                bd.getCompradorDao().create(comprador);
+            } catch (SQLException ex) {
+                response.sendRedirect(REDIRECCION
+                        + "?mensaje=No se pudo crear Comprador&error=" + ex.getMessage());
+                return;
+            }
+        } else {
+            comprador = new Comprador();
+            comprador.setId(new Integer(strId));
         }
+
 
         pedido.setComprador(comprador);
         pedido.setEstado(Pedido.ESTADO_ACTIVO);
