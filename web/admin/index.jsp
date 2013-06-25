@@ -22,7 +22,7 @@
                     <div class="row">
                         <div class="btn-group btn-group-vertical">
 
-                            <a href="/cm/admin/baseDeDatos.jsp"class="span4 btn">Base de Datos</a>
+                            <a href="/cm/admin/"class="span4 btn">Usuarios</a>
                             <a href="/cm/admin/pedidos.jsp" class="span4 btn">Pedidos</a>
                             <a href="/cm/admin/productos.jsp" class="span4 btn">Productos</a>
                             <a href="/cm/admin/tiposPersonalizacion.jsp" class="span4 btn">Tipos de Personalizaci&oacute;n</a>

@@ -11,7 +11,7 @@
         <%@include file="plantillaLogin.jspf" %>
         <c:if test="${not autorizado}">
             <ul class = "nav pull-right">
-                <li> <a href = "/cm/admin/"> <i class=" icon-user"></i> Registrarse </a></li>
+                <li> <a href = "/cm/registrarUsuario.jsp"> <i class=" icon-user"></i> Registrarse </a></li>
             </ul>
             <form class="navbar-form pull-right" action="/cm/servlet/Entrar" method="get">
                 <input type="text" name="user" class="input-small" placeholder="Usuario">
