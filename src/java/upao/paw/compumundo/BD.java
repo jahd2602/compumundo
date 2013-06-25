@@ -15,7 +15,7 @@ public class BD {
     public static Class[] ENTIDADES = {Categoria.class, Comprador.class,
         Configuracion.class, ConfiguracionInicial.class, LineaPedido.class,
         Pedido.class, Personalizacion.class, Producto.class,
-        TipoPersonalizacion.class};
+        TipoPersonalizacion.class, Usuario.class};
     private static BD instance;
     private JdbcPooledConnectionSource conexion;
     private Dao<Categoria, Integer> categoriaDao = null;
@@ -27,6 +27,7 @@ public class BD {
     private Dao<Personalizacion, Integer> personalizacionDao = null;
     private Dao<Producto, Integer> productoDao = null;
     private Dao<TipoPersonalizacion, Integer> tipoPersonalizacionDao = null;
+    private Dao<Usuario, Integer> usuarioDao = null;
 
     private BD(JdbcPooledConnectionSource conexion) {
         this.conexion = conexion;
@@ -89,6 +90,11 @@ public class BD {
     public Dao<TipoPersonalizacion, Integer> getTipoPersonalizacionDao() throws SQLException {
         return tipoPersonalizacionDao == null ? tipoPersonalizacionDao = DaoManager.createDao(
                 conexion, TipoPersonalizacion.class) : tipoPersonalizacionDao;
+    }
+
+    public Dao<Usuario, Integer> getUsuarioDao() throws SQLException {
+        return usuarioDao == null ? usuarioDao = DaoManager.createDao(
+                conexion, Usuario.class) : usuarioDao;
     }
     //</editor-fold>
 }
