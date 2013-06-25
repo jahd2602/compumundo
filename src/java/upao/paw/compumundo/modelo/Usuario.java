@@ -14,8 +14,6 @@ public class Usuario {
     private String pass;
     @DatabaseField(canBeNull = false)
     private boolean esAdmin;
-    @DatabaseField(foreign = true)
-    private Comprador comprador;
 
     public int getId() {
         return id;
@@ -47,13 +45,5 @@ public class Usuario {
 
     public void setEsAdmin(boolean esAdmin) {
         this.esAdmin = esAdmin;
-    }
-
-    public Comprador getComprador() {
-        return comprador;
-    }
-
-    public void setComprador(Comprador comprador) {
-        this.comprador = comprador;
     }
 }

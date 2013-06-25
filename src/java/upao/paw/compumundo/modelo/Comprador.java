@@ -22,6 +22,16 @@ public class Comprador {
     private String tipoTarjeta;
     @DatabaseField
     private String numeroTarjeta;
+    @DatabaseField(foreign=true)
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
     public int getId() {
         return id;
