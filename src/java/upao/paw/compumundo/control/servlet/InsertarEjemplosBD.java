@@ -44,6 +44,17 @@ public class InsertarEjemplosBD extends HttpServlet {
         }
         //</editor-fold>
 
+        Usuario usrAdmin = new Usuario();
+        usrAdmin.setNombre("admin");
+        usrAdmin.setPass("admin");
+        try {
+            bd.getUsuarioDao().create(usrAdmin);
+        } catch (SQLException ex) {
+            response.sendRedirect(REDIRECCION
+                    + "?mensaje=No se pudo crear ejemplo en tabla Usuario&error=" + ex.getMessage());
+            return;
+        }
+
         //<editor-fold defaultstate="collapsed" desc="Agregar TipoPersonalizacion Disco Duro">
         TipoPersonalizacion tpDiscoDuro = new TipoPersonalizacion();
         tpDiscoDuro.setNombre("Disco Duro");
