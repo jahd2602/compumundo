@@ -1,11 +1,13 @@
 package upao.paw.compumundo.control.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import upao.paw.compumundo.Carrito;
 import upao.paw.compumundo.Login;
 
 /**
@@ -32,6 +34,10 @@ public class Salir extends HttpServlet {
 
         request.getSession().removeAttribute(Login.LOGIN_USUARIO);
         request.getSession().removeAttribute(Login.LOGIN_ESADMIN);
+        
+        Carrito carrito = new Carrito();
+        carrito.setSesion(request.getSession());
+        carrito.setItems(new ArrayList<Integer>());
 
         response.sendRedirect(REDIRECCION);
     }
