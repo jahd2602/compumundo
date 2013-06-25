@@ -2,4 +2,5 @@
 <%@ page pageEncoding="UTF-8" %>
 <div class="footer">
     <p>&copy; JAHD Software</p>
+    <p><a href="/cm/admin/baseDeDatos.jsp">Administrar BD</a></p>
 </div>
