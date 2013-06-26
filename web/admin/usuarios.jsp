@@ -39,8 +39,8 @@
                 </div>
                 <div class="row offset2">
                     <div class="span2 btn-group btn-group-vertical">
-                        <input class="btn btn-block" type="submit" name="accion" value="Elevar"/>
-                        <input class="btn btn-block" type="submit" name="accion" value="Revocar"/>
+                        <button class="btn btn-block" type="submit" name="accion" value="Elevar"><i class="icon-chevron-up"></i> Elevar</button>
+                        <button class="btn btn-block" type="submit" name="accion" value="Revocar"><i class="icon-chevron-down"></i> Revocar</button>
                     </div>
                 </div>
             </form>
