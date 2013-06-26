@@ -1,0 +1,22 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@include file="plantillaCabecera.jspf" %>
+<div class = "navbar">
+    <div class = "navbar-inner">
+        <ul class = "nav">
+            <li> <a href = "/cm/index.jsp"> <i class="icon-home"></i> Categor&iacute;as </a></li>
+            <li><a href = "/cm/carrito.jsp"> <i class="icon-shopping-cart"></i> Ver Carrito </a></li>
+        </ul>
+        <jsp:useBean id="login" scope="application" class="upao.paw.compumundo.Login"/>
+        <jsp:setProperty name="login" property="requiereAdmin" value="false"/>
+        <%@include file="plantillaLogin.jspf" %>
+        <c:if test="${not autorizado}">
+            <c:redirect url="/index.jsp?mensaje=No se cuentan con los privilegios suficientes&error=El usuario esta autenticado"/>
+        </c:if>
+        <c:if test="${login.esAdmin}">
+            <ul class = "nav">
+                <li> <a href = "/cm/admin/"> <i class="icon-wrench"></i> Area Administrativa </a></li>
+            </ul>
+        </c:if>
+    </div>
+</div>
+<%@include file="plantillaAlerta.jspf" %>
