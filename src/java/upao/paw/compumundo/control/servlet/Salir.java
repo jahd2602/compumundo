@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import upao.paw.compumundo.Carrito;
 import upao.paw.compumundo.Login;
 
 /**
@@ -32,6 +33,7 @@ public class Salir extends HttpServlet {
 
         request.getSession().removeAttribute(Login.LOGIN_USUARIO);
         request.getSession().removeAttribute(Login.LOGIN_ESADMIN);
+        request.getSession().removeAttribute(Carrito.ITEMS_CARRITO);
 
         response.sendRedirect(REDIRECCION);
     }
