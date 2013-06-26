@@ -35,11 +35,12 @@
                     </div>
                 </div>
                 <div class="row" style="margin-top: 10px">
-                    <div class="span1 offset2"> Acciones: </div>
+                    <div class="span4 offset2"> Privilegios Administrativos: </div>
                 </div>
                 <div class="row offset2">
                     <div class="span2 btn-group btn-group-vertical">
                         <input class="btn btn-block" type="submit" name="accion" value="Elevar"/>
+                        <input class="btn btn-block" type="submit" name="accion" value="Revocar"/>
                     </div>
                 </div>
             </form>

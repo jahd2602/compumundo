@@ -41,7 +41,7 @@ public class AccionesUsuario extends HttpServlet {
             response.sendRedirect(REDIRECCION + "?mensaje=Error realizando accion&error=Falta parametro id");
             return;
         }
-        if (accion.equals("Elevar")) {
+        if (accion.equals("Elevar") || accion.equals("Revocar")) {
             Dao<Usuario, Integer> usuarioDao;
             try {
                 usuarioDao = BD.getInstance().getUsuarioDao();
@@ -49,30 +49,57 @@ public class AccionesUsuario extends HttpServlet {
                 response.sendRedirect(REDIRECCION + "?mensaje=Error realizando accion&error=No se pudo conectar a la base de datos");
                 return;
             }
-            Usuario aElevar;
+            Usuario usuario;
             try {
-                aElevar = usuarioDao.queryForId(new Integer(id));
+                usuario = usuarioDao.queryForId(new Integer(id));
             } catch (SQLException ex) {
                 response.sendRedirect(REDIRECCION + "?mensaje=Error realizando accion&error=No se encuentra usuario");
                 return;
             }
-            if (aElevar == null) {
+            if (usuario == null) {
                 response.sendRedirect(REDIRECCION + "?mensaje=Error realizando accion&error=No se encuentra usuario");
                 return;
             }
-            if (aElevar.isEsAdmin()) {
-                response.sendRedirect(REDIRECCION + "?mensaje=Error realizando accion&error=El usuario ya es administrador");
+            if (accion.equals("Elevar")) {
+                if (usuario.isEsAdmin()) {
+                    response.sendRedirect(REDIRECCION + "?mensaje=Error realizando accion&error=El usuario ya es administrador");
+                    return;
+                }
+                usuario.setEsAdmin(true);
+                try {
+                    usuarioDao.update(usuario);
+                } catch (SQLException ex) {
+                    response.sendRedirect(REDIRECCION + "?mensaje=Error realizando accion&error=No se pudo actualizar usuario");
+                    return;
+                }
+                response.sendRedirect(REDIRECCION + "?mensaje=Usuario elevado con exito");
+                return;
+            } else { // Revocar
+                if (!usuario.isEsAdmin()) {
+                    response.sendRedirect(REDIRECCION + "?mensaje=Error realizando accion&error=El usuario no es administrador");
+                    return;
+                }
+                int size;
+                try {
+                    size = usuarioDao.queryForEq("esAdmin", true).size();
+                }catch (SQLException ex) {
+                    response.sendRedirect(REDIRECCION + "?mensaje=Error realizando accion&error=No se pudo contar administradores");
+                    return;
+                }
+                if (size<=1) {
+                    response.sendRedirect(REDIRECCION + "?mensaje=Error realizando accion&error=El sistema no puede quedarse sin administradores");
+                    return;
+                }
+                usuario.setEsAdmin(false);
+                try {
+                    usuarioDao.update(usuario);
+                } catch (SQLException ex) {
+                    response.sendRedirect(REDIRECCION + "?mensaje=Error realizando accion&error=No se pudo actualizar usuario");
+                    return;
+                }
+                response.sendRedirect(REDIRECCION + "?mensaje=Permisos de usuario revocados con exito");
                 return;
             }
-            aElevar.setEsAdmin(true);
-            try {
-                usuarioDao.update(aElevar);
-            } catch (SQLException ex) {
-                response.sendRedirect(REDIRECCION + "?mensaje=Error realizando accion&error=No se pudo actualizar usuario");
-                return;
-            }
-            response.sendRedirect(REDIRECCION + "?mensaje=Usuario elevado con exito");
-            return;
         } else {
             response.sendRedirect(REDIRECCION + "?mensaje=Ocurrio un error&error=No existe la acccion " + accion);
             return;
