@@ -54,8 +54,8 @@
                                     </div>
                                 </div>
                             </div>
-                                    <form method="get" action="/cm/servlet/CambiarConfiguracion">
-                                        <div class="row">
+                            <form method="get" action="/cm/servlet/CambiarConfiguracion">
+                                <div class="row">
                                     <div class="span2 offset2">${personalizacion.tipoPersonalizacion.nombre} </div>
                                     <div class="span2"> ${personalizacion.nombre} </div>
                                     <div class="span2">S/ ${personalizacion.precio} </div>
@@ -74,15 +74,15 @@
 
                                 </div>
 
-                                    <div class="row" style="margin-top: 20px">
+                                <div class="row" style="margin-top: 20px">
 
                                     <div class="span2 offset4">
                                         <a href="/cm/servlet/AgregarAlCarrito?id=${param.id}" class="btn btn-primary">Agregar Al Carro</a>
                                     </div>
 
-                                        <div class="span2 offset2">
-                                            <input type="hidden" name="id" value="${param.id}"/>
-                                            <button type="submit" class="span2 btn">Realizar Cambios</button>
+                                    <div class="span2 offset2">
+                                        <input type="hidden" name="id" value="${param.id}"/>
+                                        <button type="submit" class="span2 btn">Realizar Cambios</button>
                                     </div>
                                 </div>
                             </form>

@@ -25,7 +25,7 @@
                                 <tr>
                                     <th></th>
                                     <th>Articulo</th>
-                                    <th>Precio</th>
+                                    <th>Precio Base</th>
                                     <th>Sub Total</th>
                                 </tr>
                             </thead>
