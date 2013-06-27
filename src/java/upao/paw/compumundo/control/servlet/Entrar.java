@@ -68,11 +68,10 @@ public class Entrar extends HttpServlet {
             return;
         }
         request.getSession().setAttribute(Login.LOGIN_USUARIO, user);
+        request.getSession().setAttribute(Login.LOGIN_ESADMIN, usuario.isEsAdmin());
+        request.getSession().setAttribute(Login.LOGIN_ID, usuario.getId());
 
         String redireccion = usuario.isEsAdmin() ? "/cm/admin/" : REDIRECCION;
-        request.getSession().setAttribute(Login.LOGIN_ESADMIN, usuario.isEsAdmin());
-        request.getSession().setAttribute(Login.LOGIN_ID,usuario.getId());
-
         response.sendRedirect(redireccion);
     }
 

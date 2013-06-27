@@ -49,7 +49,7 @@ public class RealizarPedido extends HttpServlet {
             return;
         }
 
-        Object objUsuarioId = request.getAttribute(Login.LOGIN_ID);
+        Object objUsuarioId = request.getSession().getAttribute(Login.LOGIN_ID);
         if (objUsuarioId == null) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudo realizar pedido&error=Al parecer el usuario no esta autenticado");
