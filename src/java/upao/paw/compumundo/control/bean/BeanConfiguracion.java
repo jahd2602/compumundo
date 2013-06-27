@@ -35,7 +35,6 @@ public class BeanConfiguracion {
         return per;
     }
 
-
     public List<Configuracion> getConfiguraciones() throws SQLException {
         return configuracionDao.queryForAll();
     }
@@ -50,8 +49,10 @@ public class BeanConfiguracion {
         Personalizacion per = getPersonalizacionPorLineaPedidoId();
         if (per != null) {
             return per.getPrecio();
+        } else {
+            return 0;
         }
-        throw new SQLException("No se encontro LineaPedido o Personalizacion");
+//        throw new SQLException("No se encontro LineaPedido o Personalizacion");
     }
 
     public Personalizacion getPersonalizacionPorLineaPedidoId() throws SQLException {

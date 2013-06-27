@@ -20,10 +20,6 @@
             <jsp:setProperty name="listaLineaPedidos" property="idLineaPedido" param="id"/>
             <c:catch var="ex">
                 <c:set var="producto" value="${listaLineaPedidos.productoPorIdLineaPedido}"/>
-                <jsp:setProperty name="listaConfiguracion" property="lineaPedidoId" param="id"/>
-                <c:set var="personalizacion" value="${listaConfiguracion.personalizacionRefreshTipoPorLineaPedidoId}"/>
-                <jsp:setProperty name="listaPersonalizaciones" property="idTipoPersonalizacion" value="${personalizacion.tipoPersonalizacion.id}"/>
-                <c:set var="personalizaciones" value="${listaPersonalizaciones.personalizacionesPorTipo}"/>
                 <c:set var="monto" value="${listaLineaPedidos.montoPorIdLineaPedido}"/>
             </c:catch>
             <c:choose>
@@ -35,32 +31,39 @@
                     </div>
                 </c:when>
                 <c:otherwise>
-                    <c:choose>
-                        <c:when test="${empty personalizacion}">
-                            <div class="row">
-                                <div class="span10 offset1 lead">
-                                    No se encuentra personalizacion o producto
-                                </div>
+                    <div class="row">
+                        <div class="well span8 offset2">
+                            <div class="span3">
+                                <strong>Producto: </strong> ${producto.descripcion}
                             </div>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="row">
-                                <div class="well span8 offset2">
-                                    <div class="span3">
-                                        <strong>Producto: </strong> ${producto.descripcion}
-                                    </div>
-                                    <div class="span3 offset1">
-                                        <strong>Precio Base: </strong>S/. ${producto.precio_base}
+                            <div class="span3 offset1">
+                                <strong>Precio Base: </strong>S/. ${producto.precio_base}
+                            </div>
+                        </div>
+                    </div>
+                    <form method="get" action="/cm/servlet/CambiarConfiguracion">
+
+                        <c:catch>
+                            <jsp:setProperty name="listaConfiguracion" property="lineaPedidoId" param="id"/>
+                            <c:set var="personalizacion" value="${listaConfiguracion.personalizacionRefreshTipoPorLineaPedidoId}"/>
+                            <jsp:setProperty name="listaPersonalizaciones" property="idTipoPersonalizacion" value="${personalizacion.tipoPersonalizacion.id}"/>
+                            <c:set var="personalizaciones" value="${listaPersonalizaciones.personalizacionesPorTipo}"/>
+                        </c:catch>
+                        <c:choose>
+                            <c:when test="${empty personalizacion}">
+                                <div class="row">
+                                    <div class="span8 offset4">
+                                        Este producto no tiene personalización
                                     </div>
                                 </div>
-                            </div>
-                            <form method="get" action="/cm/servlet/CambiarConfiguracion">
+                            </c:when>
+                            <c:otherwise>
                                 <div class="row">
                                     <div class="span2 offset2">${personalizacion.tipoPersonalizacion.nombre} </div>
                                     <div class="span2"> ${personalizacion.nombre} </div>
                                     <div class="span2">S/ ${personalizacion.precio} </div>
                                     <div class="span4">
-                                        <select name="idCambia">
+                                        <select name="idCambia" style="width: 180px">
                                             <c:forEach var="per" items="${personalizaciones}">
                                                 <option ${per.id==personalizacion.id?'selected':''} value="${per.id}">${per.nombre}</option>
                                             </c:forEach>
@@ -68,26 +71,30 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="span1 offset4"><strong>Total:</strong></div>
-
-                                    <div class="span2 offset1"> S/ ${monto} </div>
-
-                                </div>
-
-                                <div class="row" style="margin-top: 20px">
-
-                                    <div class="span2 offset4">
-                                        <a href="/cm/servlet/AgregarAlCarrito?id=${param.id}" class="btn btn-primary">Agregar Al Carro</a>
-                                    </div>
-
-                                    <div class="span2 offset2">
+                                    <div class="span2 offset8">
                                         <input type="hidden" name="id" value="${param.id}"/>
                                         <button type="submit" class="span2 btn">Realizar Cambios</button>
                                     </div>
                                 </div>
-                            </form>
-                        </c:otherwise>
-                    </c:choose>
+                            </c:otherwise>
+                        </c:choose>
+                        <div class="row">
+                            <div class="span1 offset4"><strong>Total:</strong></div>
+
+                            <div class="span2 offset1"> S/ ${monto} </div>
+
+                        </div>
+
+                        <div class="row" style="margin-top: 20px">
+
+                            <div class="span2 offset4">
+                                <a href="/cm/servlet/AgregarAlCarrito?id=${param.id}" class="btn btn-primary">Agregar Al Carro</a>
+                            </div>
+
+
+                        </div>
+                    </form>
+
                 </c:otherwise>
             </c:choose>
 

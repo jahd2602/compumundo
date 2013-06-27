@@ -117,9 +117,9 @@
                                                     </c:catch>
                                                     <c:choose>
                                                         <c:when test="${exx != null}">
-                                                            <div class="alert alert-danger">
-                                                                No se pudo conectar a la base de datos (Personalizacion)
-                                                            </div>
+                                                            <li class="muted">
+                                                                Este Articulo no cuenta con Personalización
+                                                            </li>
                                                         </c:when>
                                                         <c:otherwise>
                                                             <li>${personalizacion.tipoPersonalizacion.nombre}: ${personalizacion.nombre} (S/. ${personalizacion.precio})</li>
