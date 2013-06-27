@@ -10,7 +10,7 @@ public class Configuracion {
     private int id;
     @DatabaseField(foreign = true, canBeNull = false)
     private LineaPedido lineaPedido;
-    @DatabaseField(foreign = true, canBeNull = false)
+    @DatabaseField(foreign = true)
     private Personalizacion personalizacion;
 
     public int getId() {

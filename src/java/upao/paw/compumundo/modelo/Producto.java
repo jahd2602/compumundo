@@ -19,6 +19,14 @@ public class Producto {
     @DatabaseField(foreign = true)
     private Categoria categoria;
 
+    public Producto() {
+    }
+
+    public Producto(String descripcion, double precio_base) {
+        this.descripcion = descripcion;
+        this.precio_base = precio_base;
+    }
+
     public int getId() {
         return id;
     }
