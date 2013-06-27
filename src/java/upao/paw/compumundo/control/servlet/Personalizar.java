@@ -3,6 +3,7 @@ package upao.paw.compumundo.control.servlet;
 import com.j256.ormlite.dao.Dao;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -74,22 +75,34 @@ public class Personalizar extends HttpServlet {
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudo crear lineaPedido&error=" + ex.getMessage());
+            return;
         }
         ConfiguracionInicial ci = new ConfiguracionInicial();
+        boolean tieneCI = false;
         try {
-            ci = configuracionInicialDao.queryForEq("producto_id", productoId).get(0);
+            List<ConfiguracionInicial> queryForEq = configuracionInicialDao.queryForEq("producto_id", productoId);
+            if (queryForEq.isEmpty()) {
+                tieneCI = false;
+            } else {
+                tieneCI = true;
+                ci = queryForEq.get(0);
+            }
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudo obtener configuracion inicial&error=" + ex.getMessage());
+            return;
         }
         Configuracion configuracion = new Configuracion();
         configuracion.setLineaPedido(lp);
-        configuracion.setPersonalizacion(ci.getPersonalizacion());
+        if (tieneCI) {
+            configuracion.setPersonalizacion(ci.getPersonalizacion());
+        }
         try {
             configuracionDao.create(configuracion);
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudo crear configuracion&error=" + ex.getMessage());
+            return;
         }
 
         response.sendRedirect("/cm/pantPersonalizar.jsp?id=" + configuracion.getId());
