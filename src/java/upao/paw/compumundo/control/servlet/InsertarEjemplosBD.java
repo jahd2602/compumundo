@@ -252,6 +252,7 @@ public class InsertarEjemplosBD extends HttpServlet {
         cDesktop.setNombre("Desktop");
         try {
             bd.getCategoriaDao().create(cDesktop);
+            AgregarProductosACategoria(bd, cDesktop, new Producto("HP Pavilion", 2500), new Producto("Inspiron One", 3200), new Producto("Apple iMac", 5500));
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudo crear ejemplo en tabla Categoria&error=" + ex.getMessage());
@@ -264,6 +265,8 @@ public class InsertarEjemplosBD extends HttpServlet {
         cTemp.setNombre("Laptop");
         try {
             bd.getCategoriaDao().create(cTemp);
+            AgregarProductosACategoria(bd, cTemp, new Producto("Toshiba Notebook", 3400), new Producto("Apple Macbook Pro", 8900), new Producto("HP ProBook", 3900));
+
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudo crear ejemplo en tabla Categoria&error=" + ex.getMessage());
@@ -276,6 +279,7 @@ public class InsertarEjemplosBD extends HttpServlet {
         cTemp.setNombre("Netbook");
         try {
             bd.getCategoriaDao().create(cTemp);
+            AgregarProductosACategoria(bd, cTemp, new Producto("Sony Netbook Amd", 1500), new Producto("HP Netbook Envy X2", 800), new Producto("Samsung Netbook AMD", 950));
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudo crear ejemplo en tabla Categoria&error=" + ex.getMessage());
@@ -288,6 +292,7 @@ public class InsertarEjemplosBD extends HttpServlet {
         cTemp.setNombre("Tablet");
         try {
             bd.getCategoriaDao().create(cTemp);
+            AgregarProductosACategoria(bd, cTemp, new Producto("Lenovo A2107", 500), new Producto("Xperia S", 1100), new Producto("Bluesens Android 4.0", 350));
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudo crear ejemplo en tabla Categoria&error=" + ex.getMessage());
@@ -300,6 +305,7 @@ public class InsertarEjemplosBD extends HttpServlet {
         cTemp.setNombre("Videojuegos");
         try {
             bd.getCategoriaDao().create(cTemp);
+            AgregarProductosACategoria(bd, cTemp, new Producto("Call of Duty Ghost", 150), new Producto("Fifa 13", 90), new Producto("Watch Dogs", 180));
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudo crear ejemplo en tabla Categoria&error=" + ex.getMessage());
@@ -312,6 +318,7 @@ public class InsertarEjemplosBD extends HttpServlet {
         cTemp.setNombre("Impresoras");
         try {
             bd.getCategoriaDao().create(cTemp);
+            AgregarProductosACategoria(bd, cTemp, new Producto("HP OjPro", 220), new Producto("Canon MX521", 90), new Producto("Epson Office TX", 110));
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudo crear ejemplo en tabla Categoria&error=" + ex.getMessage());
@@ -324,6 +331,7 @@ public class InsertarEjemplosBD extends HttpServlet {
         cTemp.setNombre("EReaders");
         try {
             bd.getCategoriaDao().create(cTemp);
+            AgregarProductosACategoria(bd, cTemp, new Producto("Screen Alex", 800), new Producto("Nook", 1100), new Producto("iBook", 9990));
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudo crear ejemplo en tabla Categoria&error=" + ex.getMessage());
@@ -336,6 +344,7 @@ public class InsertarEjemplosBD extends HttpServlet {
         cTemp.setNombre("Accesorios");
         try {
             bd.getCategoriaDao().create(cTemp);
+            AgregarProductosACategoria(bd, cTemp, new Producto("Mouse Razer", 80), new Producto("Audifonos BEAT", 200), new Producto("USB Kingston", 25));
         } catch (SQLException ex) {
             response.sendRedirect(REDIRECCION
                     + "?mensaje=No se pudo crear ejemplo en tabla Categoria&error=" + ex.getMessage());
@@ -346,7 +355,7 @@ public class InsertarEjemplosBD extends HttpServlet {
         //<editor-fold defaultstate="collapsed" desc="Agregar Producto Computadora HP">
         Producto proComputadora = new Producto();
         proComputadora.setCategoria(cDesktop);
-        proComputadora.setDescripcion("Computadora HP");
+        proComputadora.setDescripcion("HP Slate");
         proComputadora.setPrecio_base(890);
         try {
             bd.getProductoDao().create(proComputadora);
@@ -557,4 +566,12 @@ public class InsertarEjemplosBD extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void AgregarProductosACategoria(BD bd, Categoria categoria, Producto... productos) throws SQLException {
+        for (Producto producto : productos) {
+            producto.setCategoria(categoria);
+            bd.getProductoDao().create(producto);
+        }
+
+    }
 }
